@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	   <head>
+		    <meta charset="UTF-8">
+			<title>Add Payee</title>
+			<script src="javascript/jquery.min.js"></script>
+			<script>			
+			
+			</script>
+
+		</head>
+		<body>
+		<div  align=right>
+			<a href="home">Home Page</a>
+		</div>
+		<div id="header" align = center>
+			<h2>Add Payee</h2>
+		</div>
+		<div align="center">
+		<form action="server/controller_action.py/addpayee" method="post">
+				
+				<table>
+					<tr><th></th></tr>
+					<tr>
+						<td>Payee Account Number</td>
+						<td><input type="text" name="payee_acc_no" placeholder = "10 digits" required></td>
+					</tr>
+					<tr>
+						<td>Payee Account Name</td>
+						<td><input type="text" name="payee_acc_name" placeholder = "Title Case" required></td>
+					</tr>
+					<tr>
+						<td>Payee Account Bank</td>
+						<td><input type="text" name="payee_acc_bank" placeholder = "(Title Case)" required></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Add Payee" /></td>
+						<td></td>
+					</tr>
+				</table>
+			</form>
+			</div>
+			<script src="/static/js/script.js" charset="utf-8"></script>
+			<script src="/static/js/lib/jquery.min.js" charset="utf-8"></script>
+		</body>
+	</html>

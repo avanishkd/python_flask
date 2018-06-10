@@ -1,0 +1,826 @@
+2018-06-10 20:11:44 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:11:44] "GET / HTTP/1.1" 200 -
+2018-06-10 20:11:44 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:11:44] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-10 20:11:44 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:11:44] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-10 20:11:49 : INFO app.py => login credentials: ankur password
+2018-06-10 20:11:50 : INFO db_util.py => <_mysql.connection open to 'localhost' at 5b9e60>
+2018-06-10 20:11:50 : INFO db_util.py => Connection Established
+2018-06-10 20:11:50 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-10 20:11:50 : INFO db_access.py => No of records fetched: 1
+2018-06-10 20:11:50 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-10 20:11:51 : INFO db_util.py => <_mysql.connection open to 'localhost' at 5b9e60>
+2018-06-10 20:11:51 : INFO db_util.py => Connection Established
+2018-06-10 20:11:51 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-10 20:11:51 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:11:51] "POST /login HTTP/1.1" 500 -
+2018-06-10 20:11:51 : ERROR _internal.py => Error on request:
+Traceback (most recent call last):
+  File "C:\Users\Gaurav\AppData\Local\Programs\Python\Python36-32\lib\site-packages\werkzeug\serving.py", line 270, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\Gaurav\AppData\Local\Programs\Python\Python36-32\lib\site-packages\werkzeug\serving.py", line 260, in execute
+    for data in application_iter:
+  File "C:\Users\Gaurav\AppData\Local\Programs\Python\Python36-32\lib\site-packages\werkzeug\debug\__init__.py", line 326, in debug_application
+    traceback.log(environ['wsgi.errors'])
+  File "C:\Users\Gaurav\AppData\Local\Programs\Python\Python36-32\lib\site-packages\werkzeug\debug\tbtools.py", line 292, in log
+    logfile.write(tb)
+AttributeError: 'NoneType' object has no attribute 'write'
+2018-06-10 20:11:51 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:11:51] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-10 20:11:51 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:11:51] "GET /login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-10 20:11:51 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:11:51] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-10 20:11:51 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:11:51] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-10 20:20:12 : INFO app.py => login credentials: ankur password
+2018-06-10 20:20:13 : INFO db_util.py => <_mysql.connection open to 'localhost' at 5b9e60>
+2018-06-10 20:20:13 : INFO db_util.py => Connection Established
+2018-06-10 20:20:13 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-10 20:20:13 : INFO db_access.py => No of records fetched: 1
+2018-06-10 20:20:13 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-10 20:20:14 : INFO db_util.py => <_mysql.connection open to 'localhost' at 5b9e60>
+2018-06-10 20:20:14 : INFO db_util.py => Connection Established
+2018-06-10 20:20:14 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-10 20:20:14 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:20:14] "POST /login HTTP/1.1" 500 -
+2018-06-10 20:20:14 : ERROR _internal.py => Error on request:
+Traceback (most recent call last):
+  File "C:\Users\Gaurav\AppData\Local\Programs\Python\Python36-32\lib\site-packages\werkzeug\serving.py", line 270, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\Gaurav\AppData\Local\Programs\Python\Python36-32\lib\site-packages\werkzeug\serving.py", line 260, in execute
+    for data in application_iter:
+  File "C:\Users\Gaurav\AppData\Local\Programs\Python\Python36-32\lib\site-packages\werkzeug\debug\__init__.py", line 326, in debug_application
+    traceback.log(environ['wsgi.errors'])
+  File "C:\Users\Gaurav\AppData\Local\Programs\Python\Python36-32\lib\site-packages\werkzeug\debug\tbtools.py", line 292, in log
+    logfile.write(tb)
+AttributeError: 'NoneType' object has no attribute 'write'
+2018-06-10 20:20:14 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:20:14] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-10 20:20:14 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:20:14] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-10 20:20:14 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:20:14] "GET /login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-10 20:20:14 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:20:14] "GET /login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-10 20:20:14 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:20:14] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-10 20:20:55 : INFO app.py => login credentials: ankur password
+2018-06-10 20:20:56 : INFO db_util.py => <_mysql.connection open to 'localhost' at 5b9e60>
+2018-06-10 20:20:56 : INFO db_util.py => Connection Established
+2018-06-10 20:20:56 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-10 20:20:56 : INFO db_access.py => No of records fetched: 1
+2018-06-10 20:20:56 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-10 20:20:57 : INFO db_util.py => <_mysql.connection open to 'localhost' at 5b9e60>
+2018-06-10 20:20:57 : INFO db_util.py => Connection Established
+2018-06-10 20:20:57 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-10 20:20:57 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:20:57] "POST /login HTTP/1.1" 200 -
+2018-06-10 20:20:58 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:20:58] "GET /static/style.css HTTP/1.1" 200 -
+2018-06-10 20:20:58 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:20:58] "GET /static/js/script.js HTTP/1.1" 200 -
+2018-06-10 20:20:58 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:20:58] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 -
+2018-06-10 20:21:26 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:21:26] "GET /payee.add HTTP/1.1" 200 -
+2018-06-10 20:21:26 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:21:26] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-10 20:21:33 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 20:21:33] "GET /home HTTP/1.1" 404 -
+2018-06-10 21:12:48 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-10 21:13:10 : INFO _internal.py =>  * Restarting with stat
+2018-06-10 21:13:12 : WARNING _internal.py =>  * Debugger is active!
+2018-06-10 21:13:12 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-10 21:13:12 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-10 21:13:16 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:13:16] "GET /home HTTP/1.1" 500 -
+2018-06-10 21:13:16 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:13:16] "GET /home?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-10 21:13:16 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:13:16] "GET /home?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-10 21:13:16 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:13:16] "GET /home?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-10 21:13:16 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:13:16] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-10 21:13:17 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:13:17] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-10 21:13:17 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:13:17] "GET /home?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-10 21:17:44 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:17:44] "GET /home HTTP/1.1" 500 -
+2018-06-10 21:17:44 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:17:44] "GET /home?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-10 21:17:44 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:17:44] "GET /home?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-10 21:17:44 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:17:44] "GET /home?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-10 21:17:44 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:17:44] "GET /home?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-10 21:17:44 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:17:44] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-10 21:17:44 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:17:44] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-10 21:20:25 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:20:25] "GET /home HTTP/1.1" 500 -
+2018-06-10 21:20:25 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:20:25] "GET /home?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-10 21:20:25 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:20:25] "GET /home?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-10 21:20:25 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:20:25] "GET /home?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-10 21:20:25 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:20:25] "GET /home?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-10 21:20:25 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:20:25] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-10 21:20:25 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:20:25] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-10 21:21:14 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:21:14] "GET /home HTTP/1.1" 200 -
+2018-06-10 21:21:14 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:21:14] "GET /static/js/script.js HTTP/1.1" 200 -
+2018-06-10 21:21:14 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:21:14] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 -
+2018-06-10 21:21:14 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:21:14] "GET /static/style.css HTTP/1.1" 200 -
+2018-06-10 21:21:38 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:21:38] "GET /home HTTP/1.1" 500 -
+2018-06-10 21:21:38 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:21:38] "GET /home?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-10 21:21:38 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:21:38] "GET /home?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-10 21:21:38 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:21:38] "GET /home?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-10 21:21:38 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:21:38] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-10 21:21:38 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:21:38] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-10 21:21:38 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:21:38] "GET /home?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-10 21:22:08 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:22:08] "GET /home HTTP/1.1" 200 -
+2018-06-10 21:22:08 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:22:08] "GET /static/js/script.js HTTP/1.1" 200 -
+2018-06-10 21:22:08 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:22:08] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 -
+2018-06-10 21:22:08 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:22:08] "GET /static/style.css HTTP/1.1" 200 -
+2018-06-10 21:28:08 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:28:08] "GET / HTTP/1.1" 200 -
+2018-06-10 21:28:08 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:28:08] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-10 21:28:08 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:28:08] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-10 21:28:10 : INFO app.py => login credentials: ankur password
+2018-06-10 21:28:11 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d7da90>
+2018-06-10 21:28:11 : INFO db_util.py => Connection Established
+2018-06-10 21:28:11 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-10 21:28:11 : INFO db_access.py => No of records fetched: 1
+2018-06-10 21:28:11 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-10 21:28:12 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d7da90>
+2018-06-10 21:28:12 : INFO db_util.py => Connection Established
+2018-06-10 21:28:12 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-10 21:28:12 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:28:12] "POST /login HTTP/1.1" 200 -
+2018-06-10 21:28:18 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:28:18] "GET /payee.remove HTTP/1.1" 200 -
+2018-06-10 21:28:18 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 21:28:18] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-10 23:34:57 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-10 23:34:57 : INFO _internal.py =>  * Restarting with stat
+2018-06-10 23:34:59 : WARNING _internal.py =>  * Debugger is active!
+2018-06-10 23:34:59 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-10 23:34:59 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-10 23:35:08 : INFO app.py => login credentials: ankur password
+2018-06-10 23:35:09 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2dae360>
+2018-06-10 23:35:09 : INFO db_util.py => Connection Established
+2018-06-10 23:35:09 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-10 23:35:09 : INFO db_access.py => No of records fetched: 1
+2018-06-10 23:35:09 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-10 23:35:10 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2dae360>
+2018-06-10 23:35:10 : INFO db_util.py => Connection Established
+2018-06-10 23:35:10 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-10 23:35:11 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:35:11] "POST /login HTTP/1.1" 200 -
+2018-06-10 23:35:11 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:35:11] "GET /static/js/script.js HTTP/1.1" 304 -
+2018-06-10 23:35:11 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:35:11] "GET /static/js/lib/jquery.min.js HTTP/1.1" 304 -
+2018-06-10 23:35:11 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:35:11] "GET /static/style.css HTTP/1.1" 304 -
+2018-06-10 23:35:15 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:35:15] "GET /payee.remove HTTP/1.1" 200 -
+2018-06-10 23:35:15 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:35:15] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-10 23:35:19 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:35:19] "GET /money.transfer HTTP/1.1" 200 -
+2018-06-10 23:35:19 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:35:19] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-10 23:35:19 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:35:19] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-10 23:35:23 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:35:23] "GET /money.deposit HTTP/1.1" 200 -
+2018-06-10 23:35:23 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:35:23] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-10 23:35:45 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:35:45] "GET /payee.remove HTTP/1.1" 200 -
+2018-06-10 23:35:45 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:35:45] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-10 23:36:03 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:36:03] "GET /home HTTP/1.1" 200 -
+2018-06-10 23:38:08 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-10 23:38:08 : INFO _internal.py =>  * Restarting with stat
+2018-06-10 23:57:24 : INFO _internal.py =>  * Restarting with stat
+2018-06-10 23:57:25 : WARNING _internal.py =>  * Debugger is active!
+2018-06-10 23:57:25 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-10 23:57:26 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-10 23:57:28 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:57:28] "GET / HTTP/1.1" 500 -
+2018-06-10 23:57:28 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:57:28] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-10 23:57:28 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:57:28] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-10 23:57:28 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:57:28] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-10 23:57:28 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:57:28] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-10 23:57:28 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:57:28] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-10 23:57:28 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:57:28] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-10 23:58:37 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-10 23:58:37 : INFO _internal.py =>  * Restarting with stat
+2018-06-10 23:58:38 : WARNING _internal.py =>  * Debugger is active!
+2018-06-10 23:58:38 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-10 23:58:38 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-10 23:59:35 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-10 23:59:35 : INFO _internal.py =>  * Restarting with stat
+2018-06-10 23:59:37 : WARNING _internal.py =>  * Debugger is active!
+2018-06-10 23:59:37 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-10 23:59:37 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-10 23:59:38 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:59:38] "GET / HTTP/1.1" 200 -
+2018-06-10 23:59:38 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:59:38] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-10 23:59:38 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:59:38] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-10 23:59:42 : INFO app.py => login credentials: ankur password
+2018-06-10 23:59:43 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2da8a70>
+2018-06-10 23:59:43 : INFO db_util.py => Connection Established
+2018-06-10 23:59:43 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-10 23:59:43 : INFO db_access.py => No of records fetched: 1
+2018-06-10 23:59:43 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:59:43] "POST /login HTTP/1.1" 500 -
+2018-06-10 23:59:43 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:59:43] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-10 23:59:43 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:59:43] "GET /login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-10 23:59:43 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:59:43] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-10 23:59:43 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:59:43] "GET /login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-10 23:59:43 : INFO _internal.py => 127.0.0.1 - - [10/Jun/2018 23:59:43] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:01:23 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:01:24 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:01:25 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:01:25 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:01:25 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:01:36 : INFO app.py => login credentials: ankur password
+2018-06-11 00:01:37 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d97860>
+2018-06-11 00:01:37 : INFO db_util.py => Connection Established
+2018-06-11 00:01:37 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 00:01:37 : INFO db_access.py => No of records fetched: 1
+2018-06-11 00:01:37 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:01:38 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d97860>
+2018-06-11 00:01:38 : INFO db_util.py => Connection Established
+2018-06-11 00:01:38 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:01:39 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:01:39] "POST /login HTTP/1.1" 200 -
+2018-06-11 00:01:39 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:01:39] "GET /static/js/script.js HTTP/1.1" 200 -
+2018-06-11 00:01:39 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:01:39] "GET /static/style.css HTTP/1.1" 304 -
+2018-06-11 00:01:39 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:01:39] "GET /static/js/lib/jquery.min.js HTTP/1.1" 304 -
+2018-06-11 00:01:56 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:01:56] "GET /payee.add HTTP/1.1" 200 -
+2018-06-11 00:01:57 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:01:57] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:01:59 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:01:59] "GET /home HTTP/1.1" 500 -
+2018-06-11 00:01:59 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:01:59] "GET /home?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-11 00:01:59 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:01:59] "GET /home?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-11 00:01:59 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:01:59] "GET /home?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-11 00:01:59 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:01:59] "GET /home?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-11 00:01:59 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:01:59] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:01:59 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:01:59] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:03:42 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:03:42] "GET /home HTTP/1.1" 500 -
+2018-06-11 00:03:42 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:03:42] "GET /home?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-11 00:03:42 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:03:42] "GET /home?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-11 00:03:42 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:03:42] "GET /home?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-11 00:03:42 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:03:42] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:04:07 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:04:07 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:04:09 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:04:09 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:04:09 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:04:12 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:04:12] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:04:12 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:04:12] "GET /static/style.css HTTP/1.1" 200 -
+2018-06-11 00:04:12 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:04:12] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 -
+2018-06-11 00:04:12 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:04:12] "GET /static/js/script.js HTTP/1.1" 200 -
+2018-06-11 00:04:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:04:26] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:05:45 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:05:45 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:05:47 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:05:47 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:05:47 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:05:57 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:05:57] "GET / HTTP/1.1" 200 -
+2018-06-11 00:05:57 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:05:57] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:05:57 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:05:57] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:05:57 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:05:57] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:06:02 : INFO app.py => login credentials: ankur password
+2018-06-11 00:06:03 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2e29ee8>
+2018-06-11 00:06:03 : INFO db_util.py => Connection Established
+2018-06-11 00:06:03 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 00:06:03 : INFO db_access.py => No of records fetched: 1
+2018-06-11 00:06:03 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:06:04 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2e29ee8>
+2018-06-11 00:06:04 : INFO db_util.py => Connection Established
+2018-06-11 00:06:04 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:06:04 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:06:04] "POST /login HTTP/1.1" 200 -
+2018-06-11 00:06:40 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:06:40 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:06:41 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:06:41 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:06:42 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:06:58 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:06:58 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:06:59 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:06:59 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:06:59 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:07:10 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:07:10 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:07:12 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:07:12 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:07:12 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:07:14 : INFO app.py => login credentials: ankur password
+2018-06-11 00:07:15 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d97ce0>
+2018-06-11 00:07:15 : INFO db_util.py => Connection Established
+2018-06-11 00:07:15 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 00:07:15 : INFO db_access.py => No of records fetched: 1
+2018-06-11 00:07:15 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:07:16 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d97ce0>
+2018-06-11 00:07:16 : INFO db_util.py => Connection Established
+2018-06-11 00:07:16 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:07:16 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:07:16] "POST /login HTTP/1.1" 200 -
+2018-06-11 00:07:16 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:07:16] "GET /static/js/script.js HTTP/1.1" 200 -
+2018-06-11 00:07:16 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:07:16] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 -
+2018-06-11 00:07:16 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:07:16] "GET /static/style.css HTTP/1.1" 200 -
+2018-06-11 00:07:29 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:07:29] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:08:54 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:08:54] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:08:55 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:08:55] "GET /static/js/script.js HTTP/1.1" 304 -
+2018-06-11 00:08:55 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:08:55] "GET /static/js/lib/jquery.min.js HTTP/1.1" 304 -
+2018-06-11 00:08:55 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:08:55] "GET /static/style.css HTTP/1.1" 304 -
+2018-06-11 00:11:41 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:11:41 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:11:43 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:11:43 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:11:43 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:20:14 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:20:14 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:25:31 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:25:33 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:25:33 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:25:33 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:25:43 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:25:44 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:25:44 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:25:44 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:25:47 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:25:47] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:25:47 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:25:47] "GET /static/js/lib/jquery.min.js HTTP/1.1" 304 -
+2018-06-11 00:25:47 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:25:47] "GET /static/js/script.js HTTP/1.1" 304 -
+2018-06-11 00:25:47 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:25:47] "GET /static/style.css HTTP/1.1" 304 -
+2018-06-11 00:26:23 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:26:24 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:26:24 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:26:25 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:26:25 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:26:25 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:26:46 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:26:46 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:26:47 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:26:47 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:26:47 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:26:59 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:26:59 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:27:00 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:27:00 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:27:00 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:27:18 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:27:18] "GET /home HTTP/1.1" 500 -
+2018-06-11 00:27:18 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:27:18] "GET /home?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-11 00:27:23 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:27:23] "GET /home?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-11 00:27:23 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:27:23] "GET /home?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-11 00:27:23 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:27:23] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:27:23 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:27:23] "GET /home?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-11 00:28:24 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:28:24 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:28:26 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:28:26 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:28:26 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:28:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:28:26] "GET /home HTTP/1.1" 500 -
+2018-06-11 00:28:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:28:26] "GET /home?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-11 00:28:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:28:26] "GET /home?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-11 00:28:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:28:26] "GET /home?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-11 00:28:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:28:26] "GET /home?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-11 00:28:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:28:26] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:28:39 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:28:39 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:28:40 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:28:40 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:28:40 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:28:40 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:28:40] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:28:52 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:28:52] "GET / HTTP/1.1" 200 -
+2018-06-11 00:28:58 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:28:58] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:28:58 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:28:58] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:29:01 : INFO app.py => login credentials: ankur password
+2018-06-11 00:29:02 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2de5230>
+2018-06-11 00:29:02 : INFO db_util.py => Connection Established
+2018-06-11 00:29:02 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 00:29:02 : INFO db_access.py => No of records fetched: 1
+2018-06-11 00:29:02 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:29:03 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2de5230>
+2018-06-11 00:29:03 : INFO db_util.py => Connection Established
+2018-06-11 00:29:03 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:29:03 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:29:03] "POST /login HTTP/1.1" 200 -
+2018-06-11 00:29:11 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:29:12 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2de5230>
+2018-06-11 00:29:12 : INFO db_util.py => Connection Established
+2018-06-11 00:29:12 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:29:12 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:29:12] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:29:36 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:29:36] "GET / HTTP/1.1" 200 -
+2018-06-11 00:29:37 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:29:37] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:29:37 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:29:37] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:29:48 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:29:48] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:29:50 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:29:50] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:30:40 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:30:40 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:30:41 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:30:41 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:30:41 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:30:53 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:30:53 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:30:55 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:30:55 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:30:55 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:31:05 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:31:06 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:31:07 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:31:07 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:31:07 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:31:10 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:31:10] "GET /home HTTP/1.1" 500 -
+2018-06-11 00:31:10 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:31:10] "GET /home?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-11 00:31:10 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:31:10] "GET /home?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-11 00:31:10 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:31:10] "GET /home?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-11 00:31:10 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:31:10] "GET /home?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:31:10 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:31:10] "GET /home?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-11 00:31:31 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:31:31 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:31:32 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:31:32 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:31:32 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:31:34 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:31:34] "GET /home HTTP/1.1" 400 -
+2018-06-11 00:31:42 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:31:42] "GET /error.html HTTP/1.1" 404 -
+2018-06-11 00:32:16 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:32:16] "GET /home HTTP/1.1" 400 -
+2018-06-11 00:32:18 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:32:18] "GET /home HTTP/1.1" 400 -
+2018-06-11 00:32:19 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:32:19] "GET /home HTTP/1.1" 400 -
+2018-06-11 00:32:20 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:32:20] "GET /home HTTP/1.1" 400 -
+2018-06-11 00:32:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:32:26] "GET /error.html HTTP/1.1" 404 -
+2018-06-11 00:34:57 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:34:57 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:34:58 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:34:58 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:34:58 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:35:14 : INFO app.py => login credentials: ankur password
+2018-06-11 00:35:15 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d15b30>
+2018-06-11 00:35:15 : INFO db_util.py => Connection Established
+2018-06-11 00:35:15 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 00:35:15 : INFO db_access.py => No of records fetched: 1
+2018-06-11 00:35:15 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:35:16 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d15b30>
+2018-06-11 00:35:16 : INFO db_util.py => Connection Established
+2018-06-11 00:35:16 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:35:16 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:16] "POST /login HTTP/1.1" 200 -
+2018-06-11 00:35:16 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:16] "GET /static/js/script.js HTTP/1.1" 200 -
+2018-06-11 00:35:16 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:16] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 -
+2018-06-11 00:35:16 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:16] "GET /static/style.css HTTP/1.1" 200 -
+2018-06-11 00:35:25 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:35:26 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d2aee0>
+2018-06-11 00:35:26 : INFO db_util.py => Connection Established
+2018-06-11 00:35:26 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:35:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:26] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:35:31 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:31] "GET / HTTP/1.1" 200 -
+2018-06-11 00:35:31 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:31] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:35:31 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:31] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:35:37 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:37] "GET /home HTTP/1.1" 400 -
+2018-06-11 00:35:48 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:48] "GET /error HTTP/1.1" 500 -
+2018-06-11 00:35:48 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:48] "GET /error?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-11 00:35:48 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:48] "GET /error?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-11 00:35:48 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:48] "GET /error?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-11 00:35:48 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:48] "GET /error?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:35:48 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:48] "GET /error?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:35:48 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:35:48] "GET /error?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-11 00:36:57 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:36:57 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:36:58 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:36:58 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:36:58 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:37:05 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:05] "GET /error HTTP/1.1" 500 -
+2018-06-11 00:37:05 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:05] "GET /error?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-11 00:37:05 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:05] "GET /error?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-11 00:37:05 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:05] "GET /error?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-11 00:37:05 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:05] "GET /error?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-11 00:37:05 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:05] "GET /error?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:37:05 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:05] "GET /error?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:37:20 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:37:21 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:37:21 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:37:21 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:37:29 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:29] "GET / HTTP/1.1" 200 -
+2018-06-11 00:37:29 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:29] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:37:29 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:29] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:37:33 : INFO app.py => login credentials: ankur password
+2018-06-11 00:37:34 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d5a750>
+2018-06-11 00:37:34 : INFO db_util.py => Connection Established
+2018-06-11 00:37:34 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 00:37:34 : INFO db_access.py => No of records fetched: 1
+2018-06-11 00:37:34 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:37:35 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d5a750>
+2018-06-11 00:37:35 : INFO db_util.py => Connection Established
+2018-06-11 00:37:35 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:37:35 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:35] "POST /login HTTP/1.1" 200 -
+2018-06-11 00:37:43 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:37:44 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d5a750>
+2018-06-11 00:37:44 : INFO db_util.py => Connection Established
+2018-06-11 00:37:44 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:37:44 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:44] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:37:53 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:53] "GET / HTTP/1.1" 200 -
+2018-06-11 00:37:53 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:53] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:37:54 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:54] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:37:58 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:37:58] "GET /home HTTP/1.1" 400 -
+2018-06-11 00:38:01 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:38:01] "GET /error HTTP/1.1" 500 -
+2018-06-11 00:38:01 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:38:01] "GET /error?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-11 00:38:01 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:38:01] "GET /error?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-11 00:38:01 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:38:01] "GET /error?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-11 00:38:01 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:38:01] "GET /error?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-11 00:38:01 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:38:01] "GET /error?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:38:01 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:38:01] "GET /error?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:38:37 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:38:37 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:38:38 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:38:38 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:38:38 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:38:45 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:38:45 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:38:46 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:38:46 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:38:46 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:38:47 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:38:47] "GET /error HTTP/1.1" 500 -
+2018-06-11 00:38:47 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:38:47] "GET /error?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-11 00:38:47 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:38:47] "GET /error?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-11 00:38:47 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:38:47] "GET /error?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-11 00:38:47 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:38:47] "GET /error?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-11 00:38:47 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:38:47] "GET /error?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:38:47 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:38:47] "GET /error?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 00:39:08 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:39:08] "GET /home HTTP/1.1" 400 -
+2018-06-11 00:39:12 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:39:12] "GET /error HTTP/1.1" 200 -
+2018-06-11 00:39:39 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:39:39 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:39:41 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:39:41 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:39:41 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:40:08 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:40:08] "GET /home HTTP/1.1" 400 -
+2018-06-11 00:40:12 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:40:12] "GET /error HTTP/1.1" 200 -
+2018-06-11 00:43:39 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:43:39 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:43:41 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:43:41 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:43:41 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:43:44 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:43:44] "GET /error HTTP/1.1" 200 -
+2018-06-11 00:43:48 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:43:48] "GET /error HTTP/1.1" 200 -
+2018-06-11 00:43:56 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:43:56] "GET /home HTTP/1.1" 400 -
+2018-06-11 00:43:59 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:43:59] "GET /error HTTP/1.1" 200 -
+2018-06-11 00:44:01 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:44:01] "GET /error HTTP/1.1" 200 -
+2018-06-11 00:44:02 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:44:02] "GET /error HTTP/1.1" 200 -
+2018-06-11 00:44:03 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:44:03] "GET /error HTTP/1.1" 200 -
+2018-06-11 00:44:22 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:44:22 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:44:23 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:44:23 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:44:23 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:44:23 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:44:23] "GET /error HTTP/1.1" 200 -
+2018-06-11 00:44:29 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:44:29 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:44:30 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:44:30 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:44:30 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:44:32 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:44:32 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:44:34 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:44:34 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:44:34 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:44:36 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:44:36] "GET /home HTTP/1.1" 400 -
+2018-06-11 00:44:39 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:44:39] "GET /error HTTP/1.1" 200 -
+2018-06-11 00:44:42 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:44:42] "GET /error HTTP/1.1" 200 -
+2018-06-11 00:46:30 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:46:30 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:46:31 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:46:31 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:46:31 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:47:13 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:47:13 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:47:14 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:47:14 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:47:14 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:47:28 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 00:47:28 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 00:47:30 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 00:47:30 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 00:47:30 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 00:47:41 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:47:41] "GET /error HTTP/1.1" 200 -
+2018-06-11 00:47:41 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:47:41] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:47:41 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:47:41] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:47:51 : INFO app.py => login credentials: ankur password
+2018-06-11 00:47:52 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2db0af8>
+2018-06-11 00:47:52 : INFO db_util.py => Connection Established
+2018-06-11 00:47:52 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 00:47:52 : INFO db_access.py => No of records fetched: 1
+2018-06-11 00:47:52 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:47:53 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2db0af8>
+2018-06-11 00:47:53 : INFO db_util.py => Connection Established
+2018-06-11 00:47:53 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:47:53 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:47:53] "POST /login HTTP/1.1" 200 -
+2018-06-11 00:48:02 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:02] "GET /payee.add HTTP/1.1" 200 -
+2018-06-11 00:48:02 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:02] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:48:11 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:48:12 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d9ac20>
+2018-06-11 00:48:12 : INFO db_util.py => Connection Established
+2018-06-11 00:48:12 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:48:12 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:12] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:48:17 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:17] "GET /logout HTTP/1.1" 200 -
+2018-06-11 00:48:17 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:17] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:48:17 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:17] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:48:24 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:24] "GET /home HTTP/1.1" 400 -
+2018-06-11 00:48:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:26] "GET /error HTTP/1.1" 200 -
+2018-06-11 00:48:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:26] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:48:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:26] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:48:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:26] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:48:39 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:39] "GET /home HTTP/1.1" 400 -
+2018-06-11 00:48:42 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:42] "GET /error HTTP/1.1" 200 -
+2018-06-11 00:48:42 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:42] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:48:42 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:48:42] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:49:00 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:49:00] "GET /register HTTP/1.1" 200 -
+2018-06-11 00:49:06 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:49:06] "GET /register HTTP/1.1" 200 -
+2018-06-11 00:51:42 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:51:42] "GET /bank_application HTTP/1.1" 404 -
+2018-06-11 00:52:23 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:52:23] "GET /register HTTP/1.1" 200 -
+2018-06-11 00:52:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:52:26] "GET / HTTP/1.1" 200 -
+2018-06-11 00:52:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:52:26] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:52:26 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:52:26] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:52:42 : INFO app.py => login credentials: ankur password
+2018-06-11 00:52:43 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2db5a60>
+2018-06-11 00:52:43 : INFO db_util.py => Connection Established
+2018-06-11 00:52:43 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 00:52:43 : INFO db_access.py => No of records fetched: 1
+2018-06-11 00:52:43 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:52:44 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2db5a60>
+2018-06-11 00:52:44 : INFO db_util.py => Connection Established
+2018-06-11 00:52:44 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:52:44 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:52:44] "POST /login HTTP/1.1" 200 -
+2018-06-11 00:52:52 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:52:52] "GET /money.transfer HTTP/1.1" 200 -
+2018-06-11 00:52:52 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:52:52] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:52:52 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:52:52] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:52:58 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:52:59 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2db5a60>
+2018-06-11 00:52:59 : INFO db_util.py => Connection Established
+2018-06-11 00:52:59 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:52:59 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:52:59] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:53:02 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:53:03 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2db5a60>
+2018-06-11 00:53:03 : INFO db_util.py => Connection Established
+2018-06-11 00:53:03 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:53:03 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:53:03] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:53:03 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:53:03] "GET /static/js/script.js HTTP/1.1" 304 -
+2018-06-11 00:53:03 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:53:03] "GET /static/js/lib/jquery.min.js HTTP/1.1" 304 -
+2018-06-11 00:53:03 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:53:03] "GET /static/style.css HTTP/1.1" 304 -
+2018-06-11 00:53:39 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:53:40 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2db5a60>
+2018-06-11 00:53:40 : INFO db_util.py => Connection Established
+2018-06-11 00:53:40 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:53:40 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:53:40] "GET /home HTTP/1.1" 200 -
+2018-06-11 00:53:40 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:53:40] "GET /static/style.css HTTP/1.1" 200 -
+2018-06-11 00:53:40 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:53:40] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 -
+2018-06-11 00:53:40 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:53:40] "GET /static/js/script.js HTTP/1.1" 200 -
+2018-06-11 00:54:07 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:54:07] "GET /logout HTTP/1.1" 200 -
+2018-06-11 00:54:07 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:54:07] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:54:07 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:54:07] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 00:54:09 : INFO app.py => login credentials: ankur password
+2018-06-11 00:54:10 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2db5a60>
+2018-06-11 00:54:10 : INFO db_util.py => Connection Established
+2018-06-11 00:54:10 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 00:54:10 : INFO db_access.py => No of records fetched: 1
+2018-06-11 00:54:10 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 00:54:11 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2db5a60>
+2018-06-11 00:54:11 : INFO db_util.py => Connection Established
+2018-06-11 00:54:11 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 00:54:11 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:54:11] "POST /login HTTP/1.1" 200 -
+2018-06-11 00:55:01 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:55:01] "GET /payee.add HTTP/1.1" 200 -
+2018-06-11 00:55:01 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:55:01] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 00:57:43 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 00:57:43] "POST /server/controller_action.py/addpayee HTTP/1.1" 404 -
+2018-06-11 01:00:24 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:00:24] "GET /payee.add HTTP/1.1" 200 -
+2018-06-11 01:00:24 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:00:24] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 01:00:24 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:00:24] "GET /static/js/script.js HTTP/1.1" 200 -
+2018-06-11 01:00:24 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:00:24] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 -
+2018-06-11 01:04:48 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 01:04:48 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 01:04:49 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 01:04:49 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 01:04:49 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 01:05:24 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 01:05:24 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 01:05:25 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 01:05:25 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 01:05:25 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 01:05:30 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 01:05:30 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 01:05:32 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 01:05:32 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 01:05:32 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 01:06:37 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:37] "GET /payee.add HTTP/1.1" 500 -
+2018-06-11 01:06:37 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:37] "GET /payee.add?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-06-11 01:06:37 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:37] "GET /payee.add?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-06-11 01:06:37 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:37] "GET /payee.add?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-06-11 01:06:37 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:37] "GET /payee.add?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 01:06:37 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:37] "GET /payee.add?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-06-11 01:06:38 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:38] "GET /payee.add?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-06-11 01:06:49 : INFO app.py => login credentials: ankur password
+2018-06-11 01:06:50 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2df4a40>
+2018-06-11 01:06:50 : INFO db_util.py => Connection Established
+2018-06-11 01:06:50 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 01:06:50 : INFO db_access.py => No of records fetched: 1
+2018-06-11 01:06:50 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 01:06:51 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2df4a40>
+2018-06-11 01:06:51 : INFO db_util.py => Connection Established
+2018-06-11 01:06:51 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 01:06:51 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:51] "POST /login HTTP/1.1" 200 -
+2018-06-11 01:06:51 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:51] "GET /static/js/script.js HTTP/1.1" 200 -
+2018-06-11 01:06:51 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:51] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 -
+2018-06-11 01:06:51 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:51] "GET /static/style.css HTTP/1.1" 200 -
+2018-06-11 01:06:52 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:52] "GET /payee.add HTTP/1.1" 200 -
+2018-06-11 01:06:53 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:53] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 01:06:55 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:55] "GET /payee.add HTTP/1.1" 200 -
+2018-06-11 01:06:55 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:55] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 01:06:55 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:55] "GET /static/js/script.js HTTP/1.1" 304 -
+2018-06-11 01:06:55 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:06:55] "GET /static/js/lib/jquery.min.js HTTP/1.1" 304 -
+2018-06-11 01:08:09 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 01:08:09 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 01:08:10 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 01:08:10 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 01:08:11 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 01:08:32 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 01:08:32 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 01:08:33 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 01:08:33 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 01:08:33 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 01:08:53 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 01:08:53 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 01:08:54 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 01:08:54 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 01:08:54 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 01:08:58 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:08:58] "GET /payee.add HTTP/1.1" 400 -
+2018-06-11 01:09:01 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:01] "GET /error HTTP/1.1" 200 -
+2018-06-11 01:09:01 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:01] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 01:09:01 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:01] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 01:09:01 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:01] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 01:09:03 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:03] "GET /error HTTP/1.1" 200 -
+2018-06-11 01:09:08 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:08] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 01:09:08 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:08] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 01:09:10 : INFO app.py => login credentials: ankur password
+2018-06-11 01:09:11 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2e24ca8>
+2018-06-11 01:09:11 : INFO db_util.py => Connection Established
+2018-06-11 01:09:11 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 01:09:11 : INFO db_access.py => No of records fetched: 1
+2018-06-11 01:09:11 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 01:09:12 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2e24ca8>
+2018-06-11 01:09:12 : INFO db_util.py => Connection Established
+2018-06-11 01:09:12 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 01:09:12 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:12] "POST /login HTTP/1.1" 200 -
+2018-06-11 01:09:14 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:14] "GET /payee.add HTTP/1.1" 200 -
+2018-06-11 01:09:14 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:14] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 01:09:16 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:16] "GET /payee.add HTTP/1.1" 200 -
+2018-06-11 01:09:16 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:16] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 01:09:16 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:16] "GET /static/js/script.js HTTP/1.1" 304 -
+2018-06-11 01:09:16 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:16] "GET /static/js/lib/jquery.min.js HTTP/1.1" 304 -
+2018-06-11 01:09:18 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:18] "GET /payee.add HTTP/1.1" 200 -
+2018-06-11 01:09:18 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:18] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 01:09:18 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:18] "GET /static/js/script.js HTTP/1.1" 304 -
+2018-06-11 01:09:18 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:18] "GET /static/js/lib/jquery.min.js HTTP/1.1" 304 -
+2018-06-11 01:09:23 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 01:09:24 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2e25168>
+2018-06-11 01:09:24 : INFO db_util.py => Connection Established
+2018-06-11 01:09:24 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 01:09:24 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:24] "GET /home HTTP/1.1" 200 -
+2018-06-11 01:09:28 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:28] "GET /payee.add HTTP/1.1" 200 -
+2018-06-11 01:09:28 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:09:28] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 01:10:48 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 01:10:49 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2e25168>
+2018-06-11 01:10:49 : INFO db_util.py => Connection Established
+2018-06-11 01:10:49 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 01:10:49 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:10:49] "GET /home HTTP/1.1" 200 -
+2018-06-11 01:10:55 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:10:55] "GET /payee.remove HTTP/1.1" 200 -
+2018-06-11 01:10:55 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:10:55] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 01:13:31 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:13:31] "GET /payee.remove HTTP/1.1" 200 -
+2018-06-11 01:13:31 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:13:31] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 01:13:31 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:13:31] "GET /static/js/script.js HTTP/1.1" 304 -
+2018-06-11 01:13:31 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:13:31] "GET /static/js/lib/jquery.min.js HTTP/1.1" 304 -
+2018-06-11 01:20:01 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 01:20:01 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 01:20:03 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 01:20:03 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 01:20:03 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 01:20:09 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 01:20:09 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 01:20:11 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 01:20:11 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 01:20:11 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 01:22:27 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:22:27] "GET /home HTTP/1.1" 400 -
+2018-06-11 01:22:28 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:22:28] "GET /error HTTP/1.1" 200 -
+2018-06-11 01:22:29 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:22:29] "GET /javascript/jquery.min.js HTTP/1.1" 404 -
+2018-06-11 01:22:29 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:22:29] "GET /images/ajax-loader-1.gif HTTP/1.1" 404 -
+2018-06-11 01:22:30 : INFO app.py => login credentials: ankur password
+2018-06-11 01:22:31 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2dc1b58>
+2018-06-11 01:22:31 : INFO db_util.py => Connection Established
+2018-06-11 01:22:31 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 01:22:31 : INFO db_access.py => No of records fetched: 1
+2018-06-11 01:22:31 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 01:22:32 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2dc4370>
+2018-06-11 01:22:32 : INFO db_util.py => Connection Established
+2018-06-11 01:22:32 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 01:22:32 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:22:32] "POST /login HTTP/1.1" 200 -
+2018-06-11 01:22:43 : INFO _internal.py =>  * Detected change in 'D:\\Python\\bank_application\\app.py', reloading
+2018-06-11 01:22:43 : INFO _internal.py =>  * Restarting with stat
+2018-06-11 01:22:45 : WARNING _internal.py =>  * Debugger is active!
+2018-06-11 01:22:45 : INFO _internal.py =>  * Debugger PIN: 245-221-209
+2018-06-11 01:22:45 : INFO _internal.py =>  * Running on http://127.0.0.1:8082/ (Press CTRL+C to quit)
+2018-06-11 01:22:55 : INFO app.py => login credentials: ankur password
+2018-06-11 01:22:56 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d74a40>
+2018-06-11 01:22:56 : INFO db_util.py => Connection Established
+2018-06-11 01:22:56 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 01:22:56 : INFO db_access.py => No of records fetched: 1
+2018-06-11 01:22:56 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 01:22:57 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2d74a40>
+2018-06-11 01:22:57 : INFO db_util.py => Connection Established
+2018-06-11 01:22:57 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 01:22:57 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:22:57] "POST /login HTTP/1.1" 200 -
+2018-06-11 01:22:57 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:22:57] "GET /static/js/script.js HTTP/1.1" 304 -
+2018-06-11 01:22:57 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:22:57] "GET /static/js/lib/jquery.min.js HTTP/1.1" 304 -
+2018-06-11 01:22:57 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:22:57] "GET /static/style.css HTTP/1.1" 304 -
+2018-06-11 01:23:18 : INFO app.py => login credentials: ankur password
+2018-06-11 01:23:19 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2dac258>
+2018-06-11 01:23:19 : INFO db_util.py => Connection Established
+2018-06-11 01:23:19 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 01:23:19 : INFO db_access.py => No of records fetched: 1
+2018-06-11 01:23:19 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 01:23:20 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2dac258>
+2018-06-11 01:23:20 : INFO db_util.py => Connection Established
+2018-06-11 01:23:20 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 01:23:20 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:23:20] "POST /login HTTP/1.1" 200 -
+2018-06-11 01:23:20 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:23:20] "GET /static/js/script.js HTTP/1.1" 200 -
+2018-06-11 01:23:20 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:23:20] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 -
+2018-06-11 01:23:20 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:23:20] "GET /static/style.css HTTP/1.1" 200 -
+2018-06-11 01:24:16 : INFO app.py => login credentials: ankur password
+2018-06-11 01:24:17 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2db4d60>
+2018-06-11 01:24:17 : INFO db_util.py => Connection Established
+2018-06-11 01:24:17 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 01:24:17 : INFO db_access.py => No of records fetched: 1
+2018-06-11 01:24:17 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 01:24:18 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2db4d60>
+2018-06-11 01:24:18 : INFO db_util.py => Connection Established
+2018-06-11 01:24:18 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 01:24:18 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:24:18] "POST /login HTTP/1.1" 200 -
+2018-06-11 01:24:19 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:24:19] "GET /static/js/script.js HTTP/1.1" 304 -
+2018-06-11 01:24:19 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:24:19] "GET /static/js/lib/jquery.min.js HTTP/1.1" 304 -
+2018-06-11 01:24:19 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:24:19] "GET /static/style.css HTTP/1.1" 304 -
+2018-06-11 01:24:53 : INFO app.py => login credentials: ankur password
+2018-06-11 01:24:54 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2db4d60>
+2018-06-11 01:24:54 : INFO db_util.py => Connection Established
+2018-06-11 01:24:54 : DEBUG db_access.py => SQL query to login ->select username,password from users where username='ankur' and password ='password'
+2018-06-11 01:24:54 : INFO db_access.py => No of records fetched: 1
+2018-06-11 01:24:54 : DEBUG db_access.py => SQL query to fetch account detail is ->select firstname,lastname,account_number,account_balance,bank_name from users,accounts where users.user_id = accounts.user_id and users.username='ankur'
+2018-06-11 01:24:55 : INFO db_util.py => <_mysql.connection open to 'localhost' at 2db4d60>
+2018-06-11 01:24:55 : INFO db_util.py => Connection Established
+2018-06-11 01:24:55 : INFO db_access.py => Account detail fetched is:('Ankur', 'Pushp', '9800150001', '39570', b'State Bank Of India')
+2018-06-11 01:24:55 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:24:55] "POST /login HTTP/1.1" 200 -
+2018-06-11 01:24:55 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:24:55] "GET /static/style.css HTTP/1.1" 200 -
+2018-06-11 01:24:55 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:24:55] "GET /static/js/lib/jquery.min.js HTTP/1.1" 200 -
+2018-06-11 01:24:55 : INFO _internal.py => 127.0.0.1 - - [11/Jun/2018 01:24:55] "GET /static/js/script.js HTTP/1.1" 200 -
