@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <body onload=init()>
+<!--
 {{profile['username'] }}
 {% if user is defined %}
 {{user}}
 {%endif %}
+-->
 {% if profile is not defined %}
 
 
@@ -20,8 +22,9 @@
 	</table>
 </div>
 <div align = center>
-	<!-- <a href="/addpayee.html">Add Payee</a> -->
-	<a href="{{ url_for('add_payee') }}">Add Payee</a>
+	
+	<!--  <a href="{{ url_for('add_payee') }}">Add Payee</a> -->
+	<button type='button' onclick="window.location.href='/payee.add'">Add Payee</button>
 	<button type='button' onclick="window.location.href='/payee.remove'">Remove Payee</button>
 	<button type='button' onclick="window.location.href='/money.transfer'">Transfer Money</button>
 	<button type='button' onclick="window.location.href='/money.deposit'">Deposit Money</button>
