@@ -1,7 +1,12 @@
-	function do_initials(){
+/*	function do_initials(){
 		var x = document.getElementById("pwd_reset_form");
 		x.style.display = "none";
 	}
+*/
+
+$(function(){
+  $("#header").load("/header"); 
+});
 			
 	function forgotpassword(){
 		var username = document.querySelectorAll('input[name="username"]')[0].value;

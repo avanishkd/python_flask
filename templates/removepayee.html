@@ -1,48 +1,52 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-			<title>Remove Payee</title>
-			<script>
-				
-			</script>
+	{% extends "base/base.html" %}
 
-		</head>
+	{% block content %}
 		<body onload="do_initials()">
-			<div  align=right>
-				<a href="home">Home Page</a>
+			
+			<div align="center" style="height:50px" border=1>
+				<h4>
+					<span id="message"></span>
+				</h4>
 			</div>
-			<div id="header" align="center">
-				<h2>Remove Payee</h2>
-			</div>
+			
 			<div align = center>
-			<form action="remove_payee" method="post">
+			<form class="input-form" action="payee.remove" method="post">
 				<input type="hidden" name="acc_number" id = "acc_number">
 				<input type="hidden" name="username" id = "username">
 				<table>
-					<tr><th></th></tr>
+					<tr><th colspan=2>Remove Payee</th></tr>
 					
 					<tr>
-						<td>Payee Account Number</td>
-						<td><input type="hidden" name="payee_acc_number" id = "payee_acc_number_text"><span id ="acc_list"></span></td>
+						<td class="lcolumn" >
+							<label for="payee_acc_no">Payee Account Number
+							</label>
+						</td>
+						<td class="rcolumn"><input type="hidden" name="payee_acc_number" id = "payee_acc_number_text"><span id ="acc_list"></span></td>
 					</tr>
 					<tr>
-						<td>Payee Account Name</td>
-						<td>
+						<td class="lcolumn" >
+						<label for="payee_acc_name">Payee Account Name
+						</label>
+						</td>
+						<td class="rcolumn" >
 						<input type="hidden" name="payee_acc_name" id="payee_acc_name" required>
 						<input type="text" name="payee_acc_name1" id="payee_acc_name1" required>
 						</td>
 					</tr>
 					<tr>
-						<td>Payee Account Bank</td>
-						<td>
+						<td class="lcolumn" >
+						<label for="payee_acc_bank">
+						Payee Account Bank
+						</label>
+						</td>
+						<td class="rcolumn">
 						<input type="hidden" name="payee_acc_bank" id="payee_acc_bank" required>
 						<input type="text" name="payee_acc_bank1" id="payee_acc_bank1" required>
 						</td>
 					</tr>
 					
 					<tr>
-						<td><input type="submit" value="Remove Payee" onclick="return validate_input()" /></td>
+						<td class="lcolumn" ><input type="submit" value="Remove Payee" onclick="return validate_input()" /></td>
 						<td></td>
 					</tr>
 				</table>
@@ -50,5 +54,5 @@
 			</div>
 			<script src="/static/js/removepayee.js" charset="utf-8"></script>
 			<script src="/static/js/lib/jquery.min.js" charset="utf-8"></script>
-		</body>
-	</html>
+		
+	{% endblock %}

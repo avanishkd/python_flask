@@ -1,73 +1,83 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Transfer Money</title>
+	{% extends "base/base.html" %}
 
-	</head>
+	{% block content %}
 		<body onload = do_initials()>
-		<div  align=right>
-			<a href="home">Home Page</a>
-		</div>
-		<div id="header" align = center>
-			<h2>Transfer Money</h2>
-		</div>
-		<div align="center">
+		
+		<div align="center" style="height:40px">
 			<h4>
 				<span id="message"></span>
 			</h4>
 		</div>
+		<div id="overlay"></div>
 		<div align="center">
 		
-			<form action="" >
+			<form class="input-form" action="" >
 				
 				<table>
-					<tr><th></th></tr>
+					<tr><th colspan=2>Transfer Money</th></tr>
 					<tr>
-						<td>Account Number</td>
-						<td>
+						<td class="lcolumn">
+							<label for="acc_number">Account Number</label>
+						</td>
+						<td class="rcolumn" >
 							<input type="hidden" name="acc_number" id = "acc_number">
-							<label id="acc_number_label"></label>
+							<span id="acc_number_label"></span>
 						</td>
 					</tr>
 					<tr>
-						<td>Account Balance</td>
-						<td><span id="acc_balance"></span></td>
+						<td class="lcolumn">
+							<label for="acc_balance">Account Balance</label>
+						</td>
+						<td class="rcolumn"><span id="acc_balance"></span></td>
 					</tr>
 					<tr>
-						<td>Payee Account Number</td>
-						<td><!--<input type="text" name="payee_acc_number" required>--><span id ="acc_list"></span></td>
+						<td class="lcolumn" >
+							<label for="payee_acc_number">Payee Account Number</label>
+						</td>
+						<td class="rcolumn"><!--<input type="text" name="payee_acc_number" required>--><span id ="acc_list"></span></td>
 					</tr>
 					<tr>
-						<td>Payee Account Name</td>
-						<td>
+						<td class="lcolumn">
+							<label for="payee_acc_name">Payee Account Name</label>
+						</td>
+						<td class="rcolumn" >
 						<input type="hidden" name="payee_acc_name" id="payee_acc_name" required>
 						<input type="text" name="payee_acc_name1" id="payee_acc_name1" required></td>
 					</tr>
 					<tr>
-						<td>Payee Account Bank</td>
-						<td>
+						<td class="lcolumn" >
+							<label for="payee_acc_bank">Payee Account Bank</label>
+						</td>
+						<td class="rcolumn" >
 						<input type="hidden" name="payee_acc_bank" id="payee_acc_bank" required>
 						<input type="text" name="payee_acc_bank1" id="payee_acc_bank1" required>
 						</td>
 					</tr>
 					<tr>
-						<td>Amount To Transfer</td>
-						<td><input type="text" name="amount_to_transfer" id ="amount_to_transfer" placeholder="Minimum two digits" required></td>
+						<td class="lcolumn" >
+							<label for="amount_to_transfer">Amount To Transfer</label>
+						</td>
+						<td class="rcolumn">
+						<input type="text" name="amount_to_transfer" id ="amount_to_transfer" placeholder="Minimum two digits" required>
+						</td>
 					</tr>
 					<tr>
-						<td><input type="button" value="Transfer" onclick="process_transferMoney()" /></td>
+						<td class="lcolumn" ><input type="button" value="Transfer" onclick="process_transferMoney()" /></td>
 						<td></td>
 					</tr>
 				</table>	
 			</form>
-			<div class="ajax-loader">
-				<img src="static/images/ajax-loader-1.gif" class="img-responsive" />
-			</div>
 		</div>
-		<script src="/static/js/transfermoney.js" charset="utf-8"></script>
-		<script src="/static/js/lib/jquery.min.js" charset="utf-8"></script>
-		<link rel="stylesheet" href="/static/css/style.css">
-		</body>
+		<!--
+		<div class="ajax-loader" align=center>
+			<img src="static/images/ajax-loader-1.gif" class="img-responsive" />
+		</div>
+		-->
 		
-	</html>
+		
+		
+		<script src="/static/js/lib/jquery.min.js" charset="utf-8"></script>
+		
+		<script src="/static/js/transfermoney.js" charset="utf-8"></script>
+		
+{% endblock %}

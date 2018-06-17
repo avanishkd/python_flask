@@ -12,6 +12,7 @@ function do_initials(){
 	payee_acc_bank_field.prop('disabled', true);
 				
 	var url = "accountdetail";
+	$("#overlay").addClass('starting');
 	$.get(url, function(data, status){
 		//	console.log(data);
 		json = JSON.parse(data);
@@ -43,19 +44,22 @@ function do_initials(){
 							
 						});
 						*/
-	var beneficiaries_url = "getpayee_accounts";
-						
-	$.ajax({
+				var beneficiaries_url = "getpayee_accounts";
+					
+				$.ajax({
 							type:'GET',
 							beforeSend: function(){
-								$('.ajax-loader').css("visibility", "visible");
+								//$('.ajax-loader').css("visibility", "visible");
+								
 							},
 							url:beneficiaries_url,
 							success:function(data){
+								
 								if(data.length<=6){
 									alert("Payee not added");
 									submit_btn.prop('disabled', true);
 								}
+								$("#overlay").removeClass('starting');
 							json = JSON.parse(data);
 							//console.log(json);
 							var select_str = "<select name='payee_acc_number' id='payee_acc_number' style='width: 167px;'onchange='load_payee_info()'>";
@@ -71,9 +75,10 @@ function do_initials(){
 							document.getElementById("acc_list").innerHTML=select_str;
 							},
 							complete: function(){
-								$('.ajax-loader').css("visibility", "hidden");
+								//$('.ajax-loader').css("visibility", "hidden");
+								
 							}
-							});
+					});
 				}
 				
 				function load_payee_info(){

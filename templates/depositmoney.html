@@ -1,48 +1,44 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Deposit Money</title>
-			
-	</head>
+{% extends "base/base.html" %}
+
+{% block content %}
 	<body onload= do_initials()>
-		<div  align=right>
-				<a href="home">Home Page</a>
-		</div>
-		<div id="header" align = center>
-			<h2>Deposit Money</h2>
-		</div>
+		
 		<div align="center">
-			<h5>
-				<span id="message"></span>
-			</h5>
-		</div>
-		<div align="center">
-			<form action="" method="post">
-				<table>
+			<form action="" method="post" class="input-form">
+				<table >
 					<input type="hidden" name="acc_number" id = "acc_number"></td>
 					<input type="hidden" name="username" id = "username"></td>
-					<tr><th></th></tr>
 					<tr>
-						<td>Account Number</td>
-						<td><label id="acc_number_label"></label></td>
+						<th colspan=2>Deposit Money</th>
 					</tr>
 					<tr>
-						<td>Account Balance</td>
-						<td><span id="acc_balance"></span></td>
+						<td class="lcolumn">
+						<label for="acc_number_label">Account Number</label>
+						</td>
+						<td class="rcolumn"><span id="acc_number_label"></span></td>
 					</tr>
 					<tr>
-						<td>Amount to Deposit</td>
-						<td><input type="text" name="amount" id="amount" placeholder="Minimum two digits" required></td>
+						<td class="lcolumn">
+							<label for="acc_balance">Account Balance</label>
+						</td>
+						<td class="rcolumn"><span id="acc_balance"></span></td>
 					</tr>
 					<tr>
-						<td><input type="button" value="Deposit Money" onclick= "deposit_money()"/></td>
+						<td class="lcolumn">
+						<label for="amount">Amount to Deposit </label>
+						</td>
+						<td class="rcolumn">
+						<input type="text" name="amount" id="amount" placeholder="Minimum two digits" required></td>
+					</tr>
+					<tr>
+						<td class="lcolumn" >
+							<input type="button" value="Deposit Money" onclick= "deposit_money()"/>
+						</td>
 						<td></td>
 					</tr>
 				</table>
 			</form>
 		</div>
+		
 		<script src="/static/js/depositmoney.js" charset="utf-8"></script>
-		<script src="/static/js/lib/jquery.min.js" charset="utf-8"></script>
-	</body>
-</html>
+{% endblock %}

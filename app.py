@@ -30,15 +30,15 @@ def session_management():
 def login_page():
     # reset the session data
     session.clear()
-    return render_template("login.html")
+    return render_template("index.html")
 
 @app.route('/password.reset',methods=['GET', 'POST'])
 def reset_password():
     if request.method == 'GET':
-        return render_template("index.html")
+        return render_template("resetpassword.html")
     elif request.method == 'POST':
         form = request.form
-        username=form['username']
+        username="ankur"
         password=form.get('password')
         logging.info("login credentials: "+username+" "+password)
         password1 = form.get("password1")
@@ -282,7 +282,12 @@ def error_page():
 def logout():
     session.clear()
     return render_template("login.html")
-    
+
+@app.route('/header')
+def serve_header():
+    session.clear()
+    return render_template("header_homepage.html")
+   
 
 
 @app.route('/login', methods=['GET', 'POST'])
