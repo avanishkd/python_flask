@@ -15,8 +15,9 @@
 					//var home_url = "server/controller_action.py/render_dashboard?username="+username;
 					//home_link_el.attr('href', home_url);
 					//console.log(username+', '+acc_number)
-					
-					var beneficiaries_url = "getpayee_accounts";
+						
+						$("#overlay").addClass('starting');
+						var beneficiaries_url = "getpayee_accounts";
 						$.get(beneficiaries_url, function(data, status){
 							
 							console.log(data);
@@ -39,6 +40,7 @@
 							select_str += options+"</select>";
 							//console.log(select_str);
 							document.getElementById("acc_list").innerHTML=select_str;
+							$("#overlay").removeClass('starting');
 						});
 					
 				}
@@ -67,6 +69,7 @@
 						document.getElementById("payee_acc_number_text").value ='';
 					}else{
 						document.getElementById("payee_acc_number_text").value = payee_acc_number;
+						$("#overlay").addClass('starting');
 						var url = "getpayee_data?payee_acc_number="+payee_acc_number;
 						$.get(url, function(data, status){
 							//console.log(data);
@@ -76,7 +79,7 @@
 							document.getElementById("payee_acc_name1").value= json.ben_name;
 							document.getElementById("payee_acc_bank1").value= json.bank_name;
 							document.getElementById("payee_acc_bank").value= json.bank_name;
-						
+							$("#overlay").removeClass('starting');
 						});
 					}
 					

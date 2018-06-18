@@ -95,6 +95,7 @@ function do_initials(){
 					}else{
 	
 						var url = "getpayee_data?payee_acc_number="+payee_acc_number;
+						$("#overlay").addClass('starting');
 						$.get(url, function(data, status){
 							
 							json = JSON.parse(data);
@@ -103,6 +104,7 @@ function do_initials(){
 							document.getElementById("payee_acc_bank1").value= json.bank_name;
 							document.getElementById("payee_acc_bank").value= json.bank_name;
 							submit_btn.prop('disabled', false);
+							$("#overlay").removeClass('starting');
 						});
 					}
 					
@@ -162,7 +164,7 @@ function do_initials(){
 					var payee_acc_bank = $("#payee_acc_bank").val();
 					var	amount_to_transfer = $("#amount_to_transfer").val();		
 					//alert(account_number+" "+payee_acc_number+" "+payee_acc_name+" "+payee_acc_bank );
-					
+					$("#overlay").addClass('starting');
 					var arr = {account_number:account_number,
 								payee_acc_number:payee_acc_number,
 								payee_acc_name:payee_acc_name,
@@ -189,8 +191,19 @@ function do_initials(){
 						$('#message').html( jqXhr );
 					}
 				});
-					
 				
+					var url = "accountbalance?acc_number="+account_number;
+				
+					$.get(url, function(data, status){
+						console.log(data);
+						json = JSON.parse(data);
+						console.log("Data: " + json + "\nStatus: " + status);
+						var balance = json.balance;
+						document.getElementById("acc_balance").innerHTML="₹ "+balance;
+						$("#overlay").removeClass('starting');	 
+							
+					});
+					
 				}else{
 				alert("No permit");
 				}

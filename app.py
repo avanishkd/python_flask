@@ -21,6 +21,14 @@ app = Flask(__name__)
 
 dbAccess = db_access.DBAccess()
 
+@app.after_request
+def apply_caching(response):
+    logging.info("Gaurav")
+    logging.debug(str(response))
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, post-check=0, pre-check=0"
+    #response.headers["Pragma"] = "no-cache"
+    return response
+
 @app.before_request
 def session_management():
     # make the session last indefinitely until it is cleared
@@ -61,54 +69,97 @@ def is_user_registered():
 
 @app.route('/money.transfer',methods=['GET', 'POST'])
 def transfer_money():
-    if request.method == 'GET':
-        return render_template("transfermoney.html")
-    elif request.method == 'POST':
-        data = request.json
-        acc_number = data["account_number"]
-        username = "ankur"
-        payee_acc_number = data["payee_acc_number"]
-        payee_acc_name = data["payee_acc_name"]
-        payee_acc_bank = data["payee_acc_bank"]
-        amount_to_transfer = data["amount_to_transfer"]
-        logging.info("Money transfer initiated between "+username+" and "+payee_acc_name)
-        money_transfer_parties =(acc_number,username,payee_acc_number,payee_acc_name,payee_acc_bank,amount_to_transfer)
-        is_money_tranfered = dbAccess.transfer_money(money_transfer_parties)
-        if(is_money_tranfered):
-            #return "<font color=green>Money transfered</font>"
-            message = "<font color=green>Money transfered</font>"
-            return json.dumps({'message':message}), 200, {'ContentType':'application/json'}
-        else:
-            message = "<font color=red>Transaction failed</font>"
-            return json.dumps({'message':message}), 200, {'ContentType':'application/json'}            
+    if 'user' in session:
+        username = session.get('user')
+        if request.method == 'GET':
+            return render_template("transfermoney.html")
+        elif request.method == 'POST':
+            data = request.json
+            acc_number = data["account_number"]
+            #username = "ankur"
+            payee_acc_number = data["payee_acc_number"]
+            payee_acc_name = data["payee_acc_name"]
+            payee_acc_bank = data["payee_acc_bank"]
+            amount_to_transfer = data["amount_to_transfer"]
+            logging.info("Money transfer initiated between "+username+" and "+payee_acc_name)
+            money_transfer_parties =(acc_number,username,payee_acc_number,payee_acc_name,payee_acc_bank,amount_to_transfer)
+            is_money_tranfered = dbAccess.transfer_money(money_transfer_parties)
+            if(is_money_tranfered):
+                message = "<font color=green>Money transfered</font>"
+                return json.dumps({'message':message}), 200, {'ContentType':'application/json'}
+            else:
+                message = "<font color=red>Transaction failed</font>"
+                return json.dumps({'message':message}), 200, {'ContentType':'application/json'}            
+    else:
+        session['message']="Session invalid"
+        return redirect("error", code=400)
     
 
 @app.route('/money.deposit',methods=['GET', 'POST'])
 def deposit_money():
-    if request.method == 'GET':
-        return render_template("depositmoney.html")
-    elif request.method == 'POST':
-        form = request.form
-        username='ankur'
-        acc_number = form['acc_number']
-        amount = form['amount']
-        money_deposited = dbAccess.deposit_money(username,acc_number,amount)
-        if(money_deposited):
-            logging.info("Money deposited, amount is "+str(amount))
-            return "<font color='green'>Money deposited</font>";
-        else:
-            return "<font color='red'>Money couldn't be deposited</font>";
+    if 'user' in session:
+        username = session.get('user')
+        if request.method == 'GET':
+            return render_template("depositmoney.html")
+        elif request.method == 'POST':
+            form = request.form
+            #username='ankur'
+            acc_number = form['acc_number']
+            amount = form['amount']
+            money_deposited = dbAccess.deposit_money(username,acc_number,amount)
+            if(money_deposited):
+                logging.info("Money deposited, amount is "+str(amount))
+                return "<font color='green'>Money deposited</font>";
+            else:
+                return "<font color='red'>Money couldn't be deposited</font>";
+        
+    else:
+        session['message']="Session invalid"
+        return redirect("error", code=400)
             
     
 @app.route('/accountbalance')
 def accountbalance():
-    acc_number = request.args.get("acc_number")
-    acc_balance = dbAccess.fetch_account_balance(acc_number)
-    return "{\"balance\":"+str(acc_balance)+"}"
+    if 'user' in session:
+        username = session.get('user')
+        acc_number = request.args.get("acc_number")
+        acc_balance = dbAccess.fetch_account_balance(acc_number)
+        return "{\"balance\":"+str(acc_balance)+"}"
+    else:
+        session['message']="Session invalid"
+        return redirect("error", code=400)
+    
 
 @app.route('/payee.remove',methods=['GET', 'POST'])
 def remove_payee():
-    return render_template("removepayee.html")
+    if 'user' in session:
+        username = session.get('user')
+        if request.method == 'GET':
+            return render_template("removepayee.html")
+        elif request.method == 'POST':
+            form = request.form
+            payee_acc_number = form.get("payee_acc_number")
+            payee_acc_name = form.get("payee_acc_name")
+            payee_acc_bank = form.get("payee_acc_bank")
+            #username = "ankur"
+            acc_number = form.get("acc_number")
+            #print("In controller : "+str(payee_acc_number))
+            payee=(payee_acc_number,payee_acc_name,payee_acc_bank)
+            payee_removed = dbAccess.remove_payee(payee)
+            if(payee_removed):
+                res ="<h3><font color=green>Payee removed</font></h3>"
+                redirect_url = "/home"
+                res += "<a href ="+redirect_url+">Go to home page</a>"
+            else:
+                res ="<h3><font color=red>Payee remove unsuccessful</font></h3>"
+                redirect_url = "/home"
+                res += "<a href ="+redirect_url+">Go to home page</a>"
+            return res
+        
+    else:
+        session['message']="Session invalid"
+        return redirect("error", code=400)
+    
 
 @app.route('/check_benficiary',methods=['POST'])
 def check_benficiary():
@@ -133,39 +184,50 @@ def check_benficiary():
 
 @app.route('/payee.add',methods=['GET', 'POST'])
 def add_payee():
-    if request.method == 'GET':
-        return render_template("addpayee.html")
-    elif request.method == 'POST':
-        sec_key = request.headers.get('security-key')
-        sec_key_to_match = '1234asdf56'
-        logging.info("sec key in header is:->"+sec_key)
-        logging.info("sec key to be matched with is:->"+sec_key_to_match)
-        if(sec_key==sec_key_to_match):
-            logging.info("matched the keys")
-            form = request.form
-            payee_acc_no=form['payee_acc_no']
-            payee_acc_name=form.get('payee_acc_name')
-            payee_acc_bank=form.get('payee_acc_bank')
-            username ='ankur'
-            user_id = dbAccess.get_userid_by_username(username)
-            logging.info("user id obtained from the DB is:= "+str(user_id))
-            payee = (payee_acc_no,payee_acc_name,payee_acc_bank,user_id)
-            logging.info("payee data to be added:-> "+payee_acc_no+" "+payee_acc_name+" "+payee_acc_bank)
-            payee_added = dbAccess.add_payee(payee)
-            if(payee_added):
-                return "payee added", 200
+    if 'user' in session:
+        username = session.get('user')
+        if request.method == 'GET':
+            return render_template("addpayee.html")
+        elif request.method == 'POST':
+            sec_key = request.headers.get('security-key')
+            sec_key_to_match = '1234asdf56'
+            logging.info("sec key in header is:->"+sec_key)
+            logging.info("sec key to be matched with is:->"+sec_key_to_match)
+            if(sec_key==sec_key_to_match):
+                logging.info("matched the keys")
+                form = request.form
+                payee_acc_no=form['payee_acc_no']
+                payee_acc_name=form.get('payee_acc_name')
+                payee_acc_bank=form.get('payee_acc_bank')
+                username ='ankur'
+                user_id = dbAccess.get_userid_by_username(username)
+                logging.info("user id obtained from the DB is:= "+str(user_id))
+                payee = (payee_acc_no,payee_acc_name,payee_acc_bank,user_id)
+                logging.info("payee data to be added:-> "+payee_acc_no+" "+payee_acc_name+" "+payee_acc_bank)
+                payee_added = dbAccess.add_payee(payee)
+                if(payee_added):
+                    return "payee added", 200
+                else:
+                    return "payee could not be added",202
             else:
-                return "payee could not be added",202
-        else:
-            logging.info("security keys don't match")
-            # implement kill session
-            return "this is response"
+                logging.info("security keys don't match")
+                # implement kill session
+                session.clear()
+                return "this is response"
+    else:
+        session['message']="Session invalid"
+        return redirect("error", code=400)
 
 @app.route('/getpayee_accounts')
 def getpayee_accounts():
-    username = "ankur"
-    payee_accounts = dbAccess.get_payee_accounts(username)
-    return str(payee_accounts)
+    if 'user' in session:
+        username = session.get('user')
+        #username = "ankur"
+        payee_accounts = dbAccess.get_payee_accounts(username)
+        return str(payee_accounts)
+    else:
+        session['message']="Session invalid"
+        return redirect("error", code=400)
 
 @app.route('/getpayee_data')
 def getpayee_data():
@@ -200,12 +262,17 @@ def remove_payee_from_record():
 
 @app.route('/accountdetail')
 def accountdetail():
-    username = "ankur"
-    acc_detail = dbAccess.account_detail(username)
-    account = {}
-    account['acc_number']=acc_detail[0]
-    account['acc_balance']=acc_detail[1]
-    return json.dumps(account), 200, {'ContentType':'application/json'}
+    if 'user' in session:
+        username = session.get('user')
+        #username = "ankur"
+        acc_detail = dbAccess.account_detail(username)
+        account = {}
+        account['acc_number']=acc_detail[0]
+        account['acc_balance']=acc_detail[1]
+        return json.dumps(account), 200, {'ContentType':'application/json'}   
+    else:
+        session['message']="Session invalid"
+        return redirect("error", code=400)
     
 def generate_account_number():
         """ This method generates dynamic account number
@@ -273,8 +340,11 @@ def error_page():
     if 'user' in session:
         message=session.get('message')
         session.clear()
+        if(message==None):
+            message = "Invalid session"
         return render_template("error.html",message=message)
     else:
+        session.clear()
         return render_template("login.html")
     
 
@@ -285,7 +355,7 @@ def logout():
 
 @app.route('/header')
 def serve_header():
-    session.clear()
+    #session.clear()
     return render_template("header_homepage.html")
    
 
