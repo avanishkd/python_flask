@@ -22,7 +22,7 @@ class DBAccess():
             all_recs = conn.store_result()
             logging.info("No of records fetched: "+str(all_recs.num_rows()))
             # print ("Number of Records Retrieved ->", all_recs.num_rows())
-            if (1 <= all_recs.num_rows()):        
+            if (1 == all_recs.num_rows()):        
                 result = True
             else:
                 result = False
