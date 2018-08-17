@@ -1,4 +1,4 @@
-			var flag = true;
+			var flag = false;
 			var key = "";
 			function process_addpayee(){
 			
@@ -23,14 +23,17 @@
 					headers: { 'security-key': key },
 					//async: false,
 					success: function( data, status,xhr){
+						data = JSON.parse(data);
 						console.log(data);
+						console.log(data.message);
 						console.log(status);
-						$("span[id='message']").html(data);
+						$("span[id='message']").html(data.message);
 					},
 					error: function( jqXhr, textStatus, errorThrown ){
 						console.log( errorThrown );
 						console.log( jqXhr );
 						$('#acc_no_error').html( jqXhr );
+						$("span[id='message']").html("<font color=red>Payee not added</font>");
 					}
 					});
 					
@@ -56,7 +59,7 @@
 						console.log('httpResponseCode: ' + httpResponseCode);
 						if(data.acc_exists){							
 							console.log( "Beneficiary already exists");
-							$('#acc_no_error').html( "Beneficiary already exists" );
+							$('#acc_no_error').html( "<font color=red>Beneficiary already exists</font>" );
 							$('#acc_no_error').focus();
 							flag = false;
 						}else{
@@ -71,6 +74,7 @@
 					error: function( jqXhr, textStatus, errorThrown ){
 						console.log( errorThrown );
 						console.log( jqXhr );
+						flag = false;
 						$('#acc_no_error').html( jqXhr );
 					}
 				});

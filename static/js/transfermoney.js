@@ -1,7 +1,7 @@
 var threshold_balance = 1000;
 var available_balance;
 var submit_btn;
-				
+var key;				
 function do_initials(){
 				
 	submit_btn = $("input[type='submit']");
@@ -48,38 +48,41 @@ function do_initials(){
 					
 				$.ajax({
 							type:'GET',
-							beforeSend: function(){
-								//$('.ajax-loader').css("visibility", "visible");
-								
+							beforeSend: function(xhr){
+								//xhr.setRequestHeader('security-key', key);
 							},
 							url:beneficiaries_url,
-							success:function(data){
-								
+							success:function(data, status,xhr){
+								key = xhr.getResponseHeader("security-key");
+								console.log(key);
 								if(data.length<=6){
 									alert("Payee not added");
 									submit_btn.prop('disabled', true);
 								}
 								$("#overlay").removeClass('starting');
-							json = JSON.parse(data);
-							//console.log(json);
-							var select_str = "<select name='payee_acc_number' id='payee_acc_number' style='width: 167px;'onchange='load_payee_info()'>";
-							var options ="<option value='---'>--------select--------</option>";
-							json.forEach(function(item){
-							//console.log(item);
-							var option = "<option value="+item+">"+item+"</option>";
-							options += option;
-							});
-							//console.log(options);
-							select_str += options+"</select>";
-							//console.log(select_str);
-							document.getElementById("acc_list").innerHTML=select_str;
+								json = JSON.parse(data);
+								//console.log(json);
+								var select_str = "<select name='payee_acc_number' id='payee_acc_number' style='width: 167px;'onchange='load_payee_info()'>";
+								var options ="<option value='---'>--------select--------</option>";
+								json.forEach(function(item){
+									//console.log(item);
+									var option = "<option value="+item+">"+item+"</option>";
+									options += option;
+								});
+								//console.log(options);
+								select_str += options+"</select>";
+								//console.log(select_str);
+								document.getElementById("acc_list").innerHTML=select_str;
 							},
-							complete: function(){
-								//$('.ajax-loader').css("visibility", "hidden");
-								
+							error: function( jqXhr, textStatus, errorThrown ){
+								console.log( errorThrown );
+								console.log( jqXhr );
+								flag = false;
+								$('#message').html( jqXhr );
+								$("#overlay").removeClass('starting');
 							}
 					});
-				}
+	}
 				
 				function load_payee_info(){
 					
@@ -94,9 +97,10 @@ function do_initials(){
 						submit_btn.prop('disabled', true);
 					}else{
 	
-						var url = "getpayee_data?payee_acc_number="+payee_acc_number;
+						var getpayee_data_url = "getpayee_data?payee_acc_number="+payee_acc_number;
+						/*
 						$("#overlay").addClass('starting');
-						$.get(url, function(data, status){
+						$.get(getpayee_data_url, function(data, status){
 							
 							json = JSON.parse(data);
 							document.getElementById("payee_acc_name").value= json.ben_name;
@@ -105,7 +109,34 @@ function do_initials(){
 							document.getElementById("payee_acc_bank").value= json.bank_name;
 							submit_btn.prop('disabled', false);
 							$("#overlay").removeClass('starting');
+						}).fail(function(){
+							$("#overlay").removeClass('starting');
 						});
+						*/
+						
+						$.ajax({
+							type:'GET',
+							beforeSend: function(xhr){
+								$("#overlay").addClass('starting');
+								xhr.setRequestHeader('security-key', key);
+							},
+							url:getpayee_data_url,
+							success:function(data, status,xhr){
+								json = JSON.parse(data);
+								document.getElementById("payee_acc_name").value= json.ben_name;
+								document.getElementById("payee_acc_name1").value= json.ben_name;
+								document.getElementById("payee_acc_bank1").value= json.bank_name;
+								document.getElementById("payee_acc_bank").value= json.bank_name;
+								submit_btn.prop('disabled', false);
+								$("#overlay").removeClass('starting');								
+							},
+							error: function( jqXhr, textStatus, errorThrown ){
+								submit_btn.prop('disabled', true);
+								$("#overlay").removeClass('starting');
+							}
+					});
+						
+						
 					}
 					
 				}
@@ -202,6 +233,8 @@ function do_initials(){
 						document.getElementById("acc_balance").innerHTML="₹ "+balance;
 						$("#overlay").removeClass('starting');	 
 							
+					}).fail(function(){
+						$("#overlay").removeClass('starting');
 					});
 					
 				}else{

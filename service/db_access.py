@@ -53,6 +53,7 @@ class DBAccess():
           for firstname, lastname,account_no, account_balance,bank_name in rec:
             fname= str(firstname,'utf-8')
             lname = str(lastname,'utf-8')
+            bank_name = str(bank_name,'utf-8')
             #print(fname,lname,account_no,account_balance,sep='->')
             logging.info("Account detail fetched is:"+str((fname,lname,account_no,account_balance,bank_name)))
           #return (fname,lname,account_no,account_balance,bank_name)

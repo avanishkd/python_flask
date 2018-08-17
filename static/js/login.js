@@ -5,7 +5,7 @@
 */
 
 $(function(){
-  $("#header").load("/header"); 
+  $("#header").load("/header.login"); 
 });
 			
 	function forgotpassword(){

@@ -1,4 +1,5 @@
 				var acc_number;
+				var curr_url = new URL(window.location.href);
 				function do_initials(){
 					
 					var url = "accountdetail";
@@ -10,7 +11,7 @@
 							acc_number = json.acc_number;
 							document.getElementById("acc_number_label").innerHTML=acc_number;
 							document.getElementById("acc_number").value=acc_number;
-							 var balance = json.acc_balance;
+							 var balance = "₹ "+json.acc_balance;
 							 available_balance = balance;
 							 document.getElementById("acc_balance").innerHTML=balance;
 							 $("#overlay").removeClass('starting');
@@ -48,10 +49,20 @@
 								json = JSON.parse(data);
 								console.log("Data: " + json + "\nStatus: " + status);
 								var balance = json.balance;
-								document.getElementById("acc_balance").innerHTML=balance;
-								$("#overlay").removeClass('starting');							
+								document.getElementById("acc_balance").innerHTML="₹ "+balance;
+								$("#overlay").removeClass('starting');
+								return true;
 							});
 							
+						}).error(function(obj){
+							//alert("error");
+							$("#overlay").removeClass('starting');
+							//console.log("redirecting because of error");
+							//var curr_href = window.locaton.hostname;
+							console.log(curr_url)
+							var new_loc = "http://"+curr_url.host+"/"
+							console.log(new_loc)
+							$('#message').html( "<font color='red'>Money deposit failed</font>" );
 						});			
 						
 					}				

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, abort
 from service import db_access
 from random import randint
 import logging,re,os,json
@@ -124,7 +124,7 @@ def accountbalance():
         username = session.get('user')
         acc_number = request.args.get("acc_number")
         acc_balance = dbAccess.fetch_account_balance(acc_number)
-        return "{\"balance\":"+str(acc_balance)+"}"
+        return "{\"balance\":"+str(acc_balance)+"}",200
     else:
         session['message']="Session invalid"
         return redirect("error", code=400)
@@ -141,20 +141,32 @@ def remove_payee():
             payee_acc_number = form.get("payee_acc_number")
             payee_acc_name = form.get("payee_acc_name")
             payee_acc_bank = form.get("payee_acc_bank")
+            sec_key = form.get("sec_key")
             #username = "ankur"
             acc_number = form.get("acc_number")
             #print("In controller : "+str(payee_acc_number))
-            payee=(payee_acc_number,payee_acc_name,payee_acc_bank)
-            payee_removed = dbAccess.remove_payee(payee)
-            if(payee_removed):
-                res ="<h3><font color=green>Payee removed</font></h3>"
-                redirect_url = "/home"
-                res += "<a href ="+redirect_url+">Go to home page</a>"
+            sec_key_to_match = '1256asdf65'
+            logging.info("sec key in header is:->"+sec_key)
+            logging.info("sec key to be matched with is:->"+sec_key_to_match)
+            if(sec_key==sec_key_to_match):
+                payee=(payee_acc_number,payee_acc_name,payee_acc_bank)
+                payee_removed = dbAccess.remove_payee(payee)
+                if(payee_removed):
+                    res ="<h3><font color=green>Payee removed</font></h3>"
+                    redirect_url = "/home"
+                    res += "<a href ="+redirect_url+">Go to home page</a>"
+                    return res,202
+                else:
+                    res ="<h3><font color=red>Payee remove unsuccessful</font></h3>"
+                    redirect_url = "/home"
+                    res += "<a href ="+redirect_url+">Go to home page</a>"
+                    return res,500
             else:
-                res ="<h3><font color=red>Payee remove unsuccessful</font></h3>"
-                redirect_url = "/home"
-                res += "<a href ="+redirect_url+">Go to home page</a>"
-            return res
+                logging.info("security keys don't match")
+                # implement kill session
+                session.clear()
+                return "Access forbidden",403
+            
         
     else:
         session['message']="Session invalid"
@@ -163,14 +175,12 @@ def remove_payee():
 
 @app.route('/check_benficiary',methods=['POST'])
 def check_benficiary():
+    if 'user' in session:
         logging.info("request.data is:"+str(request.data))
         logging.info("request.json is:"+str(request.json))
         data = request.json
         payee_acc_no = data['payee_acc_no']
-        username ='ankur'
-        #logging.info("before getting user_id, username is:="+username)
-        #user_id = dbAccess.get_userid_by_username(username)
-        #logging.info("username "+username+" && user_id"+user_id)
+        username = session.get('user')
         payee_added = dbAccess.check_benficiary(username,payee_acc_no)
         logging.info("response from dao layer:->"+str(payee_added))
         if(payee_added):
@@ -179,7 +189,9 @@ def check_benficiary():
         else:
             #return "payee account number doesn't exist"
             return json.dumps({'acc_exists':False}), 200, {'ContentType':'application/json','security-key':'1234asdf56'}
-        
+    else:
+        session['message']="Session invalid"
+        return redirect("error", code=400)
     
 
 @app.route('/payee.add',methods=['GET', 'POST'])
@@ -194,29 +206,35 @@ def add_payee():
             logging.info("sec key in header is:->"+sec_key)
             logging.info("sec key to be matched with is:->"+sec_key_to_match)
             if(sec_key==sec_key_to_match):
-                logging.info("matched the keys")
+                logging.info("matched the security keys successfully")
                 form = request.form
                 payee_acc_no=form['payee_acc_no']
                 payee_acc_name=form.get('payee_acc_name')
                 payee_acc_bank=form.get('payee_acc_bank')
-                username ='ankur'
+                #username ='ankur'
+                username = session.get('user')
+                payee_added = dbAccess.check_benficiary(username,payee_acc_no)
+                if(payee_added):
+                    return json.dumps({'message':'Account already exists'}), 200, {'ContentType':'application/json'}
                 user_id = dbAccess.get_userid_by_username(username)
-                logging.info("user id obtained from the DB is:= "+str(user_id))
+                logging.info("user id obtained from the DB for user "+username+" is:= "+str(user_id))
                 payee = (payee_acc_no,payee_acc_name,payee_acc_bank,user_id)
                 logging.info("payee data to be added:-> "+payee_acc_no+" "+payee_acc_name+" "+payee_acc_bank)
                 payee_added = dbAccess.add_payee(payee)
                 if(payee_added):
-                    return "payee added", 200
+                    #return "payee added", 202
+                    return json.dumps({'message':"payee added"}), 202, {'ContentType':'application/json'}
                 else:
-                    return "payee could not be added",202
+                    #return "payee could not be added",400
+                    return json.dumps({'message':"payee could not be added"}), 400, {'ContentType':'application/json'}
             else:
                 logging.info("security keys don't match")
                 # implement kill session
                 session.clear()
-                return "this is response"
+                return "Forbidden",403
     else:
         session['message']="Session invalid"
-        return redirect("error", code=400)
+        return redirect("error", code=403)
 
 @app.route('/getpayee_accounts')
 def getpayee_accounts():
@@ -224,20 +242,33 @@ def getpayee_accounts():
         username = session.get('user')
         #username = "ankur"
         payee_accounts = dbAccess.get_payee_accounts(username)
-        return str(payee_accounts)
+        return str(payee_accounts),200,{'security-key':'1234asdf56'}
     else:
         session['message']="Session invalid"
         return redirect("error", code=400)
 
 @app.route('/getpayee_data')
 def getpayee_data():
-    payee_acc_number = request.args.get("payee_acc_number")
-    payee_data = dbAccess.get_payee_data(payee_acc_number)
-    #print(str(payee_data))
-    #result = "{\"ben_name\":"+payee_data[0]+","\"bank_name\":"+payee_data[1]+"}"
-    result = "{\"ben_name\":\""+payee_data[0]+"\","
-    result += "\"bank_name\":\""+payee_data[1]+"\"}"
-    return result
+    if 'user' in session:
+        sec_key = request.headers.get('security-key')
+        sec_key_to_match = '1234asdf56'
+        logging.info("sec key in header is:->"+sec_key)
+        logging.info("sec key to be matched with is:->"+sec_key_to_match)
+        if(sec_key==sec_key_to_match):
+            payee_acc_number = request.args.get("payee_acc_number")
+            payee_data = dbAccess.get_payee_data(payee_acc_number)
+            #print(str(payee_data))
+            #result = "{\"ben_name\":"+payee_data[0]+","\"bank_name\":"+payee_data[1]+"}"
+            result = "{\"ben_name\":\""+payee_data[0]+"\","
+            result += "\"bank_name\":\""+payee_data[1]+"\"}"
+            return result,{'security-key':'1256asdf65'}
+        else:
+            logging.info("security keys don't match")
+            # implement kill session
+            session.clear()
+            return "Forbidden",403
+    else:
+        return "Invalid session",401
 
 @app.route('/remove_payee',methods=['POST'])
 def remove_payee_from_record():
@@ -254,11 +285,12 @@ def remove_payee_from_record():
         res ="<h3><font color=green>Payee removed</font></h3>"
         redirect_url = "/home"
         res += "<a href ="+redirect_url+">Go to home page</a>"
+        return res,202
     else:
         res ="<h3><font color=red>Payee remove unsuccessful</font></h3>"
         redirect_url = "/home"
         res += "<a href ="+redirect_url+">Go to home page</a>"
-    return res
+        return res,500
 
 @app.route('/accountdetail')
 def accountdetail():
@@ -287,7 +319,9 @@ def generate_account_number():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'GET':
-        return render_template("register.html")
+        message = {}
+        message['page']="register"
+        return render_template("register.html",message='register')
     elif request.method == 'POST':
         form = request.form
         firstname=form['firstname']
@@ -299,7 +333,8 @@ def register():
         if(password != password1):
                msg = "<h4><font color=red>Two passwords don't match</font></h4>"
                msg += "<div align='left'><a href='register'>Go To Register Page</a></div>"
-               return msg
+               return msg,401
+               #abort(404)
         registration_data=(firstname,lastname,bankname,username)
         account_number = generate_account_number()
         logging.info("New account number "+str(account_number)+" created for "+firstname+" "+lastname)
@@ -310,12 +345,12 @@ def register():
             logging.info("Account number "+str(account_number)+" registered for user "+firstname+" "+lastname)
             msg = "<h4><font color=green>Registered <b>"+firstname+" "+lastname+"</b> for account <b>"+str(account_number)+", </b> with username <b>"+username+"</b></font></h4>"
             msg += "<div align='left'><a href='/login'>Go To Login Page</a></div>"
-            return msg
+            return msg,200
         else:
             msg = "<div align='left'><a href='/python_project'>Go To Login Page</a></div>"
             msg += "<div align='right'><a href='/register'>Go To Register Page</a></div>"
             msg += "<h4>Could not register "+firstname+" "+lastname+"</h4>"
-            return msg
+            return msg,500
         
 
 @app.route('/home')
@@ -330,10 +365,10 @@ def homepage():
         profile['Account Number']=user_profile[2]
         profile['Account Balance']=user_profile[3]
         profile['username']=username
-        return render_template("home.html",profile=profile)
+        return render_template("home.html",profile=profile),200
     else:
         session['message']="Session invalid"
-        return redirect("error", code=400)
+        return redirect("error", code=303)
 
 @app.route('/error')
 def error_page():
@@ -342,22 +377,33 @@ def error_page():
         session.clear()
         if(message==None):
             message = "Invalid session"
-        return render_template("error.html",message=message)
+        return render_template("error.html",message=message),401
     else:
         session.clear()
-        return render_template("login.html")
+        return render_template("login.html"),400
     
 
 @app.route('/logout')
 def logout():
-    session.clear()
-    return render_template("login.html")
+    if 'user' in session:
+        session.clear()
+        return render_template("login.html")
+    else:
+        #return "Invalid session",401
+        return render_template("login.html"),400
 
 @app.route('/header')
 def serve_header():
-    #session.clear()
+    #reset the session data
+    session.clear()
     return render_template("header_homepage.html")
-   
+    
+
+@app.route('/header.login')
+def serve_login_header():
+    #reset the session data
+    session.clear()
+    return render_template("header_login.html")
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -381,9 +427,9 @@ def login():
             return render_template("home.html",profile=profile)
         else:
             if 'user' in session:
-                return session.get('user')
+                return session.get('user')+" has an active session",400
             else:
-                return "Invalid credentials"
+                return "Invalid credentials",400
     else:
         # reset the session data
         #session.clear()
