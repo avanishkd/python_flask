@@ -20,6 +20,7 @@ init_config()
 app = Flask(__name__)
 
 dbAccess = db_access.DBAccess()
+util = utils.Util()
 
 @app.after_request
 def apply_caching(response):
@@ -76,11 +77,24 @@ def transfer_money():
         elif request.method == 'POST':
             data = request.json
             acc_number = data["account_number"]
+            acc_no_valid = util.validate_account_number(acc_number)
+            if(not acc_no_valid):
+                msg = "Account number needs to be of valid format"
+                return "{\"message\":"+msg+"}",400
             #username = "ankur"
             payee_acc_number = data["payee_acc_number"]
             payee_acc_name = data["payee_acc_name"]
             payee_acc_bank = data["payee_acc_bank"]
+            payee = (payee_acc_number,payee_acc_name,payee_acc_bank)
+            payee_data_valid = util.validate_payee_fields(payee)
+            if(not payee_data_valid):
+                msg = "Payee data invalid"
+                return "{\"message\":"+msg+"}",400
             amount_to_transfer = data["amount_to_transfer"]
+            amount_valid = util.validate_money_amount(acc_number)
+            if(not amount_valid):
+                msg = "Amount not of valid format"
+                return "{\"message\":"+msg+"}",400
             logging.info("Money transfer initiated between "+username+" and "+payee_acc_name)
             money_transfer_parties =(acc_number,username,payee_acc_number,payee_acc_name,payee_acc_bank,amount_to_transfer)
             is_money_tranfered = dbAccess.transfer_money(money_transfer_parties)
@@ -106,12 +120,20 @@ def deposit_money():
             #username='ankur'
             acc_number = form['acc_number']
             amount = form['amount']
+            acc_no_valid = util.validate_account_number(acc_number)
+            if(not acc_no_valid):
+                msg = "Account number needs to be of valid format"
+                return "{\"message\":"+msg+"}",400
+            amount_valid = util.validate_money_amount(acc_number)
+            if(not amount_valid):
+                msg = "Amount not valid"
+                return "{\"message\":"+msg+"}",400
             money_deposited = dbAccess.deposit_money(username,acc_number,amount)
             if(money_deposited):
                 logging.info("Money deposited, amount is "+str(amount))
-                return "<font color='green'>Money deposited</font>";
+                return "<font color='green'>Money deposited</font>",202;
             else:
-                return "<font color='red'>Money couldn't be deposited</font>";
+                return "<font color='red'>Money couldn't be deposited</font>",501;
         
     else:
         session['message']="Session invalid"
@@ -123,6 +145,10 @@ def accountbalance():
     if 'user' in session:
         username = session.get('user')
         acc_number = request.args.get("acc_number")
+        acc_no_valid = util.validate_account_number(acc_number)
+        if(not acc_no_valid):
+            msg = "Account number needs to be of valid format"
+            return "{\"message\":"+msg+"}",400
         acc_balance = dbAccess.fetch_account_balance(acc_number)
         return "{\"balance\":"+str(acc_balance)+"}",200
     else:
@@ -150,6 +176,10 @@ def remove_payee():
             logging.info("sec key to be matched with is:->"+sec_key_to_match)
             if(sec_key==sec_key_to_match):
                 payee=(payee_acc_number,payee_acc_name,payee_acc_bank)
+                payee_data_valid = self.util.validate_payee_fields(payee)
+                if(not payee_data_valid):
+                    msg = "Payee data not valid"
+                    return msg,400
                 payee_removed = dbAccess.remove_payee(payee)
                 if(payee_removed):
                     res ="<h3><font color=green>Payee removed</font></h3>"
@@ -181,6 +211,10 @@ def check_benficiary():
         data = request.json
         payee_acc_no = data['payee_acc_no']
         username = session.get('user')
+        payee_acc_valid = util.validate_account_number(payee_acc_no)
+        if(not payee_acc_valid):
+            msg = "Payee account number not of valid format"
+            return msg,400
         payee_added = dbAccess.check_benficiary(username,payee_acc_no)
         logging.info("response from dao layer:->"+str(payee_added))
         if(payee_added):
@@ -220,6 +254,10 @@ def add_payee():
                 logging.info("user id obtained from the DB for user "+username+" is:= "+str(user_id))
                 payee = (payee_acc_no,payee_acc_name,payee_acc_bank,user_id)
                 logging.info("payee data to be added:-> "+payee_acc_no+" "+payee_acc_name+" "+payee_acc_bank)
+                payee_data_valid = util.validate_payee_fields(payee)
+                if(not payee_data_valid):
+                    msg = "Payee data invalid"
+                    return msg,400
                 payee_added = dbAccess.add_payee(payee)
                 if(payee_added):
                     #return "payee added", 202
@@ -280,6 +318,10 @@ def remove_payee_from_record():
     acc_number = form.get("acc_number")
     #print("In controller : "+str(payee_acc_number))
     payee=(payee_acc_number,payee_acc_name,payee_acc_bank)
+    payee_data_valid = self.util.validate_payee_fields(payee)
+    if(not payee_data_valid):
+        msg = "Payee data not valid"
+        return msg,400
     payee_removed = dbAccess.remove_payee(payee)
     if(payee_removed):
         res ="<h3><font color=green>Payee removed</font></h3>"
@@ -330,10 +372,15 @@ def register():
         username=form['username']
         password=form.get('password')
         password1 = form["password1"]
+        registration_data=(firstname,lastname,bankname,username)
+        registration_data_valid = util.validate_registration_fields(registration_data)
+        if(not registration_data_valid):
+            msg = "Registration data invalid"
+            return msg,400
         if(password != password1):
                msg = "<h4><font color=red>Two passwords don't match</font></h4>"
                msg += "<div align='left'><a href='register'>Go To Register Page</a></div>"
-               return msg,401
+               return msg,400
                #abort(404)
         registration_data=(firstname,lastname,bankname,username)
         account_number = generate_account_number()
@@ -413,8 +460,11 @@ def login():
         username=form['username']
         password=form.get('password')
         logging.info("login credentials: "+username+" "+password)
-        creds = (username,password)
-        is_user_valid = dbAccess.validate_login(username,password)
+        field_validated = util.validate_login_fields(username)
+        is_user_valid = false
+        if(field_validated):
+            creds = (username,password)
+            is_user_valid = dbAccess.validate_login(username,password)
         if(is_user_valid):
             user_profile=dbAccess.fetch_account_detail(username)
             profile = {}

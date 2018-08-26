@@ -29,9 +29,9 @@ class Util():
         
         
 
-    def validate_add_payee_fields(self,payee):
-        name_pattern = "^[A-Z][a-z]+(\s{0,1}[A-Z][a-z]*)*$"
-        bankname_pattern = "^[A-Z][A-Za-z]+(\s[A-Za-z]+)+$"
+    def validate_payee_fields(self,payee):
+        name_pattern = "^[A-Z][a-z]+(\s{0,1}[A-Z][a-z]*)+$"
+        bankname_pattern = "^[A-Z][A-Za-z]+(\s[A-Z][a-z]+)+$"
         acc_no_pattern = "^[1-9][0-9]{9}$"
 
         #print(str(payee))
@@ -50,6 +50,11 @@ class Util():
         amount_pattern = "^[\d]{2,5}$"
         return bool(re.search(amount_pattern,str(amount_to_transfer)))
 
+    def validate_account_number(self,account_number):
+        acc_no_pattern = "^[1-9][0-9]{9}$"
+        r1 = bool(re.search(acc_no_pattern,account_number))
+        return r1
+    
     def generate_account_number(self):
         """ This method generates dynamic account number
         """
