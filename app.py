@@ -47,9 +47,10 @@ def reset_password():
         return render_template("resetpassword.html")
     elif request.method == 'POST':
         form = request.form
-        username="ankur"
+        username=form.get('username')
         password=form.get('password')
-        logging.info("login credentials: "+username+" "+password)
+        logging.info("user credentials while updating password: "+username+" "+password)
+        print("user credentials while updating password: "+username+" "+password)
         password1 = form.get("password1")
         if(password != password1):
                msg = "<h4><font color=red>Two passwords don't match</font></h4>"
@@ -58,7 +59,7 @@ def reset_password():
         #print(username+" "+password)
         passwordReset = dbAccess.reset_password(username,password)
         if(passwordReset):
-            return redirect("login", code=200)
+            return redirect("login", code=302)
             
 
 @app.route('/is_user_registered',methods=['GET'])
@@ -124,10 +125,10 @@ def deposit_money():
             if(not acc_no_valid):
                 msg = "Account number needs to be of valid format"
                 return "{\"message\":"+msg+"}",400
-            amount_valid = util.validate_money_amount(acc_number)
+            amount_valid = util.validate_money_amount(amount)
             if(not amount_valid):
                 msg = "Amount not valid"
-                return "{\"message\":"+msg+"}",400
+                return "{\"message\":'"+msg+"'}",400
             money_deposited = dbAccess.deposit_money(username,acc_number,amount)
             if(money_deposited):
                 logging.info("Money deposited, amount is "+str(amount))
@@ -148,7 +149,7 @@ def accountbalance():
         acc_no_valid = util.validate_account_number(acc_number)
         if(not acc_no_valid):
             msg = "Account number needs to be of valid format"
-            return "{\"message\":"+msg+"}",400
+            return "{\"message\":'"+msg+"'}",400
         acc_balance = dbAccess.fetch_account_balance(acc_number)
         return "{\"balance\":"+str(acc_balance)+"}",200
     else:
@@ -461,7 +462,7 @@ def login():
         password=form.get('password')
         logging.info("login credentials: "+username+" "+password)
         field_validated = util.validate_login_fields(username)
-        is_user_valid = false
+        is_user_valid = False
         if(field_validated):
             creds = (username,password)
             is_user_valid = dbAccess.validate_login(username,password)
