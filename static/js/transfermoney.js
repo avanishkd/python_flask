@@ -217,9 +217,11 @@ function do_initials(){
 						$('#message').html( data.message );
 					},
 					error: function( jqXhr, textStatus, errorThrown ){
-						console.log( errorThrown );
-						console.log( jqXhr );
-						$('#message').html( jqXhr );
+						response = jqXhr.responseText;
+						console.log( response);
+						var json = JSON.parse(response);
+						console.log(json);
+						$('#message').html("<font color=red>"+json.message+"</font>");
 					}
 				});
 				

@@ -89,12 +89,12 @@ def transfer_money():
             payee_data_valid = util.validate_payee_fields(payee)
             if(not payee_data_valid):
                 msg = "Payee data invalid"
-                return "{\"message\":"+msg+"}",400
+                return "{\"message\":\""+msg+"\"}",400
             amount_to_transfer = data["amount_to_transfer"]
             amount_valid = util.validate_money_amount(acc_number)
             if(not amount_valid):
                 msg = "Amount not of valid format"
-                return "{\"message\":"+msg+"}",400
+                return "{\"message\":\""+msg+"\"}",400, {'ContentType':'application/json'}
             logging.info("Money transfer initiated between "+username+" and "+payee_acc_name)
             money_transfer_parties =(acc_number,username,payee_acc_number,payee_acc_name,payee_acc_bank,amount_to_transfer)
             is_money_tranfered = dbAccess.transfer_money(money_transfer_parties)
@@ -123,11 +123,11 @@ def deposit_money():
             acc_no_valid = util.validate_account_number(acc_number)
             if(not acc_no_valid):
                 msg = "Account number needs to be of valid format"
-                return "{\"message\":"+msg+"}",400
-            amount_valid = util.validate_money_amount(acc_number)
+                return "{\"message\":\""+msg+"\"}",400
+            amount_valid = util.validate_money_amount(amount)
             if(not amount_valid):
                 msg = "Amount not valid"
-                return "{\"message\":"+msg+"}",400
+                return "{\"message\":\""+msg+"\"}",400
             money_deposited = dbAccess.deposit_money(username,acc_number,amount)
             if(money_deposited):
                 logging.info("Money deposited, amount is "+str(amount))
@@ -461,7 +461,7 @@ def login():
         password=form.get('password')
         logging.info("login credentials: "+username+" "+password)
         field_validated = util.validate_login_fields(username)
-        is_user_valid = false
+        is_user_valid = False
         if(field_validated):
             creds = (username,password)
             is_user_valid = dbAccess.validate_login(username,password)
