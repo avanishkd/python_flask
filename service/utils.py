@@ -13,7 +13,7 @@ class Util():
         return r1;
 
     def validate_registration_fields(self,registration_data):
-        name_pattern = "^[A-Z][a-z]+$"
+        name_pattern = "^[A-Z][a-z]*$"
         name_pattern1 = ""
         bankname_pattern = "^[A-Z][A-Za-z]+(\s[A-Za-z]+)+$"
         username_pattern = "^\w+$"
@@ -25,6 +25,12 @@ class Util():
         r2 = bool(re.search(name_pattern,lastname))
         r3 = bool(re.search(bankname_pattern,bankname))
         r4 = bool(re.search(username_pattern,username))
+        print(firstname+" "+lastname+" "+bankname+" "+username)
+        print(r1)
+        print(r2)
+        print(r3)
+        print(r3)
+        print(r4)
         return r1 and r2 and r3 and r4
         
         

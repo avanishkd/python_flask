@@ -10,7 +10,7 @@ class DBConnect():
         """Common method to establish DB connection and reuse it
         """
         try:
-            conn = _mysql.connect("localhost", "root", "Welcome123", "banking_mindtree")
+            conn = _mysql.connect("localhost", "root", "Welcome123", "banking_tej")
             logging.info(conn)
             logging.info("Connection Established")
             

@@ -47,8 +47,9 @@ def reset_password():
         return render_template("resetpassword.html")
     elif request.method == 'POST':
         form = request.form
-        username="ankur"
+        username = form.get('username')
         password=form.get('password')
+        print("login credentials: "+username+" "+password)
         logging.info("login credentials: "+username+" "+password)
         password1 = form.get("password1")
         if(password != password1):
@@ -58,7 +59,8 @@ def reset_password():
         #print(username+" "+password)
         passwordReset = dbAccess.reset_password(username,password)
         if(passwordReset):
-            return redirect("login", code=200)
+            print("Password reset to: "+password)
+            return redirect("login", code=302)
             
 
 @app.route('/is_user_registered',methods=['GET'])
@@ -91,7 +93,7 @@ def transfer_money():
                 msg = "Payee data invalid"
                 return "{\"message\":\""+msg+"\"}",400
             amount_to_transfer = data["amount_to_transfer"]
-            amount_valid = util.validate_money_amount(acc_number)
+            amount_valid = util.validate_money_amount(amount_to_transfer)
             if(not amount_valid):
                 msg = "Amount not of valid format"
                 return "{\"message\":\""+msg+"\"}",400, {'ContentType':'application/json'}
@@ -176,7 +178,7 @@ def remove_payee():
             logging.info("sec key to be matched with is:->"+sec_key_to_match)
             if(sec_key==sec_key_to_match):
                 payee=(payee_acc_number,payee_acc_name,payee_acc_bank)
-                payee_data_valid = self.util.validate_payee_fields(payee)
+                payee_data_valid = util.validate_payee_fields(payee)
                 if(not payee_data_valid):
                     msg = "Payee data not valid"
                     return msg,400
@@ -487,4 +489,4 @@ def login():
 
 if __name__ == '__main__':
     app.secret_key = os.urandom(24)
-    app.run(host='0.0.0.0',port=8082,debug=True)
+    app.run(host='0.0.0.0',port=8083,debug=True)
