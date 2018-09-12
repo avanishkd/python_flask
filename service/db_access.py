@@ -240,6 +240,7 @@ class DBAccess():
             rec = all_recs.fetch_row()
           return result
         except Exception as e:
+          logging.error("Database Error ->"+str(e))
           print("Database Error ->",e)
         
 
@@ -262,12 +263,66 @@ class DBAccess():
         #select beneficiary_name from beneficiaries where beneficiary_ac_no= 9800150005 and beneficiary_ac_no in (select account_number from accounts where bank_name ='HDFC Bank')
         try:
           conn.query(sql)
-          result =True
+          result = self.remove_account(payee_acc_no)
         except Exception as e:
           print("Database Error ->",e)
         finally:
           conn.close()
 
+        return result
+
+    def remove_account(self,account_number):
+        sql1 = "select user_id from accounts where account_number="+str(account_number)
+        sql = "delete from accounts where account_number="+str(account_number)
+        result = False
+        try:
+          conn = DBConnect.getConnection()
+      
+        except Exception as e:
+          print ("Connection Error ->", e)
+          
+        try:
+          conn.query(sql1)
+          all_recs = conn.store_result()
+          rec = all_recs.fetch_row()
+          print("rec is:")
+          print(str(rec))
+          print("Number of elements in the record is:",len(rec))
+          for values in rec:
+            user_id = int(values[0])
+            print("user_id is:")
+            print(user_id)
+            print(type(user_id))
+            #key_value= str(value,'utf-8')
+            #print(type(balance))
+          # delete the account
+          conn.query(sql)
+          result = self.remove_user(user_id)
+        except Exception as e:
+          logging.error("Database Error ->"+str(e))
+          print("Database Error ->",e)
+        finally:
+          conn.close()
+        return result
+
+    def remove_user(self,user_id):
+        sql = "delete from users where user_id="+str(user_id)
+        print("Query to delete user:->")
+        print(sql)
+        result = False
+        try:
+          conn = DBConnect.getConnection()
+      
+        except Exception as e:
+          print ("Connection Error ->", e)
+          logging.error("Connection Error ->"+str(e))
+        try:
+            conn.query(sql)
+            result = True
+        except Exception as e:
+          print("Database Error ->",e)
+        finally:
+          conn.close()
         return result
 
     def account_detail(self,username):
@@ -488,13 +543,70 @@ class DBAccess():
           result = True
         except Exception as e:
           print("Database error =>",e)
-          logging.error("Database error, "+(e))
+          logging.error("Database error, "+str(e))
           result = False
         finally:
           conn.close()
       
         return result
 
+    def update_sec_key(self,key_id,key_value,username):
+        subquery = "select user_id from users where username ='"+username+"'"
+        sql = "INSERT INTO security_keys VALUES('"+key_id+"', '"+key_value+"',("+subquery+")) ON DUPLICATE KEY UPDATE key_value='"+key_value+"'"
+        logging.debug("SQL query to insert or update security key: "+sql)
+        print("SQL query to insert or update security key: "+sql)
+        result = False
+        try:
+          conn = DBConnect.getConnection()
+      
+        except Exception as e:
+          print ("Connection Error ->", e)
+          logging.error("Connection Error in update security key ->"+str(e))
+        try:
+          conn.query(sql)
+          result = True
+        except Exception as e:
+          print ("Database Error ->", e)
+          logging.error("Database error, "+str(e))
+          result = False
+        finally:
+          conn.close()
+          print(result)
+        return result
+
+    def get_sec_key(self,key_id,username):
+        sql = "select key_value from security_keys INNER JOIN users where security_keys.key_id='"+key_id+"' and users.username='"+username+"'"
+        print("SQL query:-->")
+        print(sql)
+        #result = False
+        try:
+          conn = DBConnect.getConnection()
+      
+        except Exception as e:
+          print ("Connection Error ->", e)
+          logging.error("Connection Error ->"+str(e))
+        try:
+          conn.query(sql)
+          all_recs = conn.store_result()
+          rec = all_recs.fetch_row()
+          print("rec is:")
+          print(str(rec))
+          print("Number of elements in the record is:",len(rec))
+          for values in rec:
+            value = values[0]
+            print("value is:")
+            print(value)
+            key_value= str(value,'utf-8')
+            #print(type(balance))
+            print("key_value is:")
+            print(key_value)
+          return key_value       
+        except Exception as e:
+          print ("Database Error ->", e)
+        except Exception as e:
+          logging.error("Database Error ->"+str(e))
+          print("Database Error ->",e)
+        
 
   
 

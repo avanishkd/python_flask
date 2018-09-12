@@ -19,7 +19,7 @@
 					//console.log(username+', '+acc_number)
 						
 						$("#overlay").addClass('starting');
-						var beneficiaries_url = "getpayee_accounts";
+						var beneficiaries_url = "getpayee_accounts_0";
 						$.get(beneficiaries_url, function(data, status,xhr){
 							
 							console.log(data);
@@ -76,7 +76,7 @@
 						document.getElementById("payee_acc_number_text").value = payee_acc_number;
 						if(flag){
 							$("#overlay").addClass('starting');
-							var url = "getpayee_data?payee_acc_number="+payee_acc_number;
+							var url = "getpayee_data_0?payee_acc_number="+payee_acc_number;
 							/*
 							$.get(url, function(data, status,xhr){
 								//console.log(data);
@@ -91,7 +91,7 @@
 							});
 							*/
 							$.ajax({
-								url: "getpayee_data",
+								url: "getpayee_data_0",
 								data: { payee_acc_number: payee_acc_number },
 							type: "GET", 
 							beforeSend: function(xhr){

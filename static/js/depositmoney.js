@@ -1,4 +1,5 @@
 				var acc_number;
+				var key;
 				var curr_url = new URL(window.location.href);
 				function do_initials(){
 					
@@ -12,9 +13,12 @@
 							document.getElementById("acc_number_label").innerHTML=acc_number;
 							document.getElementById("acc_number").value=acc_number;
 							 var balance = "₹ "+json.acc_balance;
+							 key = json.sec_key;
 							 available_balance = balance;
 							 document.getElementById("acc_balance").innerHTML=balance;
 							 $("#overlay").removeClass('starting');
+						}).fail(function(){
+							$("#overlay").removeClass('starting');
 						});
 				}
 				
@@ -33,7 +37,8 @@
 						$.post("money.deposit",
 						{
 							acc_number: acc_number,
-							amount:amount
+							amount:amount,
+							sec_key:key
 						},
 						function(data,status){
 							//console.log("Data: " + data + "\nStatus: " + status);

@@ -1,5 +1,5 @@
-import logging,re
-from random import randint
+import logging,re,random,string
+from random import randint,choice
 
 class Util():
     """ This class has the utility methods needed in controller
@@ -55,6 +55,16 @@ class Util():
     def validate_money_amount(self,amount_to_transfer):
         amount_pattern = "^[\d]{2,5}$"
         return bool(re.search(amount_pattern,str(amount_to_transfer)))
+    
+    def validate_transfer_amount(self,account_balance,amount_to_transfer):
+        new_balance = int(account_balance) - int(amount_to_transfer)
+        print(type(account_balance))
+        print(type(amount_to_transfer))
+        print(""+str(new_balance));
+        if(new_balance <=1000):
+            return False
+        else:
+            return True;
 
     def validate_account_number(self,account_number):
         acc_no_pattern = "^[1-9][0-9]{9}$"
@@ -70,6 +80,17 @@ class Util():
         acc_number = int(str_d)
         logging.info("Account number generated")
         return acc_number
+    def generate_sec_key(self):
+        """
+            This method generates security key to be exchanged in the header
+        """
+        min_char = 20
+        max_char = 28
+        allchar = string.ascii_letters + string.digits
+        rand_string = "".join(choice(allchar) for x in range(randint(min_char, max_char)))
+        print( "Sec_key generated is:- ",rand_string)
+        return rand_string
+        
 
     def render_dashboard(self,username):
         print(username)

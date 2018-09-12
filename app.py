@@ -97,6 +97,11 @@ def transfer_money():
             if(not amount_valid):
                 msg = "Amount not of valid format"
                 return "{\"message\":\""+msg+"\"}",400, {'ContentType':'application/json'}
+            account_balance = dbAccess.fetch_account_balance(acc_number)
+            amount_valid = util.validate_transfer_amount(account_balance,amount_to_transfer)
+            if(not amount_valid):
+                msg = "Transfer amount exceeds limit, account balance shouldn't be below 1000"
+                return "{\"message\":\""+msg+"\"}",400, {'ContentType':'application/json'}
             logging.info("Money transfer initiated between "+username+" and "+payee_acc_name)
             money_transfer_parties =(acc_number,username,payee_acc_number,payee_acc_name,payee_acc_bank,amount_to_transfer)
             is_money_tranfered = dbAccess.transfer_money(money_transfer_parties)
@@ -105,7 +110,7 @@ def transfer_money():
                 return json.dumps({'message':message}), 200, {'ContentType':'application/json'}
             else:
                 message = "<font color=red>Transaction failed</font>"
-                return json.dumps({'message':message}), 200, {'ContentType':'application/json'}            
+                return json.dumps({'message':message}), 400, {'ContentType':'application/json'}            
     else:
         session['message']="Session invalid"
         return redirect("error", code=400)
@@ -122,6 +127,7 @@ def deposit_money():
             #username='ankur'
             acc_number = form['acc_number']
             amount = form['amount']
+            sec_key = form['sec_key']
             acc_no_valid = util.validate_account_number(acc_number)
             if(not acc_no_valid):
                 msg = "Account number needs to be of valid format"
@@ -130,12 +136,19 @@ def deposit_money():
             if(not amount_valid):
                 msg = "Amount not valid"
                 return "{\"message\":\""+msg+"\"}",400
-            money_deposited = dbAccess.deposit_money(username,acc_number,amount)
-            if(money_deposited):
-                logging.info("Money deposited, amount is "+str(amount))
-                return "<font color='green'>Money deposited</font>",202;
+            sec_key_to_match = dbAccess.get_sec_key("deposit_money",username)
+            if(sec_key==sec_key_to_match):
+                money_deposited = dbAccess.deposit_money(username,acc_number,amount)
+                if(money_deposited):
+                    logging.info("Money deposited, amount is "+str(amount))
+                    return "<font color='green'>Money deposited</font>",202;
+                else:
+                    return "<font color='red'>Money couldn't be deposited</font>",501;
             else:
-                return "<font color='red'>Money couldn't be deposited</font>",501;
+                logging.info("security keys don't match")
+                # implement kill session
+                session.clear()
+                return "Access forbidden",403
         
     else:
         session['message']="Session invalid"
@@ -174,6 +187,7 @@ def remove_payee():
             acc_number = form.get("acc_number")
             #print("In controller : "+str(payee_acc_number))
             sec_key_to_match = '1256asdf65'
+            sec_key_to_match = dbAccess.get_sec_key("remove_payee",username)
             logging.info("sec key in header is:->"+sec_key)
             logging.info("sec key to be matched with is:->"+sec_key_to_match)
             if(sec_key==sec_key_to_match):
@@ -224,7 +238,13 @@ def check_benficiary():
             return json.dumps({'acc_exists':True}), 200, {'ContentType':'application/json'}
         else:
             #return "payee account number doesn't exist"
-            return json.dumps({'acc_exists':False}), 200, {'ContentType':'application/json','security-key':'1234asdf56'}
+            sec_key = util.generate_sec_key()
+            print("sec key is "+sec_key)
+            result = dbAccess.update_sec_key("add_payee",sec_key,username)
+            if(result):
+                return json.dumps({'acc_exists':False}), 200, {'ContentType':'application/json','security-key':sec_key}
+            else:
+                return json.dumps({'acc_exists':True}), 200, {'ContentType':'application/json','security-key':''}
     else:
         session['message']="Session invalid"
         return redirect("error", code=400)
@@ -239,8 +259,12 @@ def add_payee():
         elif request.method == 'POST':
             sec_key = request.headers.get('security-key')
             sec_key_to_match = '1234asdf56'
+            sec_key_to_match = dbAccess.get_sec_key("add_payee",username)
+            print("sec key in header is:->"+sec_key)
+            print("sec key to be matched with is:->"+sec_key_to_match)
             logging.info("sec key in header is:->"+sec_key)
             logging.info("sec key to be matched with is:->"+sec_key_to_match)
+            print("Going to compare")
             if(sec_key==sec_key_to_match):
                 logging.info("matched the security keys successfully")
                 form = request.form
@@ -251,7 +275,7 @@ def add_payee():
                 username = session.get('user')
                 payee_added = dbAccess.check_benficiary(username,payee_acc_no)
                 if(payee_added):
-                    return json.dumps({'message':'Account already exists'}), 200, {'ContentType':'application/json'}
+                    return json.dumps({'message':'Account already exists'}), 400, {'ContentType':'application/json'}
                 user_id = dbAccess.get_userid_by_username(username)
                 logging.info("user id obtained from the DB for user "+username+" is:= "+str(user_id))
                 payee = (payee_acc_no,payee_acc_name,payee_acc_bank,user_id)
@@ -280,18 +304,81 @@ def add_payee():
 def getpayee_accounts():
     if 'user' in session:
         username = session.get('user')
-        #username = "ankur"
-        payee_accounts = dbAccess.get_payee_accounts(username)
-        return str(payee_accounts),200,{'security-key':'1234asdf56'}
+        sec_key = util.generate_sec_key()
+        print("sec key is "+sec_key)
+        sec_key_generated = dbAccess.update_sec_key("transfer_money_payee_data",sec_key,username)
+        if(sec_key_generated):
+            payee_accounts = dbAccess.get_payee_accounts(username)
+            return str(payee_accounts),200,{'security-key':sec_key}
+        else:
+            payee_accounts =[]
+            return str(payee_accounts),500,{'security-key':'1234asdf56'}
     else:
         session['message']="Session invalid"
         return redirect("error", code=400)
+    
+@app.route('/getpayee_accounts_0')
+def getpayee_accounts_for_remove_payee():
+    if 'user' in session:
+        username = session.get('user')
+        sec_key = util.generate_sec_key()
+        print("sec key is "+sec_key)
+        sec_key_generated = dbAccess.update_sec_key("remove_payee_0",sec_key,username)
+        if(sec_key_generated):
+            payee_accounts = dbAccess.get_payee_accounts(username)
+            return str(payee_accounts),200,{'security-key':sec_key}
+        else:
+            payee_accounts =[]
+            return str(payee_accounts),500,{'security-key':'1234asdf56'}
+    else:
+        session['message']="Session invalid"
+        return redirect("error", code=400)
+
+
+@app.route('/getpayee_data_0')
+def getpayee_data_for_remove_payee_request():
+    if 'user' in session:
+        sec_key = request.headers.get('security-key')
+        sec_key_to_match = '1234asdf56'
+        username = session.get('user')
+        sec_key_to_match = dbAccess.get_sec_key("remove_payee_0",username)
+        logging.info("sec key in header is:->"+sec_key)
+        logging.info("sec key to be matched with is:->"+sec_key_to_match)
+        if(sec_key==sec_key_to_match):
+            payee_acc_number = request.args.get("payee_acc_number")
+            payee_data = dbAccess.get_payee_data(payee_acc_number)
+            #print(str(payee_data))
+            #result = "{\"ben_name\":"+payee_data[0]+","\"bank_name\":"+payee_data[1]+"}"
+            result = "{\"ben_name\":\""+payee_data[0]+"\","
+            result += "\"bank_name\":\""+payee_data[1]+"\"}"
+            #return result,{'security-key':'1256asdf65'}
+            sec_key = util.generate_sec_key()
+            print("sec key is "+sec_key)
+            logging.info("Going to insert the sec key to remove payee")
+            sec_key_updated = dbAccess.update_sec_key("remove_payee",sec_key,username)
+            #logging.info("Inserted the sec key to remove payee")
+            #logging.info("After inserting the sec key to remove payee, result got from db layer is "+str(sec_key_updated))
+            #print("Inserted the sec key to remove payee")
+            #print("After inserting the sec key to remove payee, result got from db layer is "+str(sec_key_updated))
+            if(sec_key_updated):
+                return result,{'security-key':sec_key}
+            else:
+                return result,500,{'security-key':''}
+        else:
+            logging.info("security keys don't match")
+            # implement kill session
+            session.clear()
+            return "Forbidden",403
+    else:
+        return "Invalid session",401
 
 @app.route('/getpayee_data')
 def getpayee_data():
     if 'user' in session:
         sec_key = request.headers.get('security-key')
         sec_key_to_match = '1234asdf56'
+        username = session.get('user')
+        sec_key_to_match = dbAccess.get_sec_key("transfer_money_payee_data",username)
         logging.info("sec key in header is:->"+sec_key)
         logging.info("sec key to be matched with is:->"+sec_key_to_match)
         if(sec_key==sec_key_to_match):
@@ -309,6 +396,10 @@ def getpayee_data():
             return "Forbidden",403
     else:
         return "Invalid session",401
+
+
+
+
 
 @app.route('/remove_payee',methods=['POST'])
 def remove_payee_from_record():
@@ -342,10 +433,19 @@ def accountdetail():
         username = session.get('user')
         #username = "ankur"
         acc_detail = dbAccess.account_detail(username)
+        sec_key = util.generate_sec_key()
+        print("sec key for deposit money is "+sec_key)
+        logging.info("sec key for deposit money is "+sec_key)
+        sec_key_added = dbAccess.update_sec_key("deposit_money",sec_key,username)
         account = {}
-        account['acc_number']=acc_detail[0]
-        account['acc_balance']=acc_detail[1]
-        return json.dumps(account), 200, {'ContentType':'application/json'}   
+        
+        if(sec_key_added):
+            account['acc_number']=acc_detail[0]
+            account['acc_balance']=acc_detail[1]
+            account['sec_key']=sec_key
+            return json.dumps(account), 200, {'ContentType':'application/json'}
+        else:
+            return json.dumps(account), 500, {'ContentType':'application/json'}
     else:
         session['message']="Session invalid"
         return redirect("error", code=400)
